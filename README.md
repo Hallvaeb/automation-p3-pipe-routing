@@ -1,4 +1,4 @@
-# kbe-a3
+# Knowledge Based Engineering - Assignment 3
 Pipe routing for Aker Solutions
 
 # Diagrams 
