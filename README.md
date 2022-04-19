@@ -2,6 +2,7 @@
 
 *Pipe routing for Aker Solutions*
 
+<img width="438" alt="image" src="https://user-images.githubusercontent.com/77838167/163984708-be47790b-90f3-46f6-a828-fc089ddba84e.png">
 
 
 # Resources
