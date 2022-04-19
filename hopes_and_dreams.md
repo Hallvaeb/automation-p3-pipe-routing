@@ -8,3 +8,7 @@
 ### Diameter decision making
 
 Make it so that the piping diameter is dimensioned from what the equipment with the largest input/output diameter is.
+
+### Obstacles
+
+Obstacles. 
