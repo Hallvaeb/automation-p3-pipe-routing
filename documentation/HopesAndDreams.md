@@ -12,3 +12,5 @@ Make it so that the piping diameter is dimensioned from what the equipment with 
 ### Obstacles
 
 Obstacles. 
+
+Pipe, create bolt holes for the in and outlets
