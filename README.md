@@ -59,3 +59,8 @@ https://docs.google.com/presentation/d/1volnQZx73xrEWFnqd1DYNUQJxOoo28eUqVTO4H7n
 
 https://docs.google.com/presentation/d/1yHX-N33iYnPBKCOc--ymY_Ym0EnStBr7sz17UqjRPcM/edit#slide=id.g11f14f842be_0_8
 
+
+
+# Helpful:
+
+Tab inconsistency: F1, "convert indentation to tabs".

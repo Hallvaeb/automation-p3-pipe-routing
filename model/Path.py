@@ -1,38 +1,81 @@
 
 
 class Path():
-    start_point = None
-    end_point = None
-    points_to_visit = []
+
     
-
-    def fill_points_to_visit(self, env, list_of_equ):
-        #TODO: fill out def
-        self.points_to_visit.append(env.point_A)
-        for equ in list_of_equ:
-            self.points_to_visit.append(equ.point_in, equ.point_out)
-        self.points_to_visit.append(env.point_B)
-
-        return self.points_to_visit
+    end_points = []
+    complete_path = []
     
-    def get_paths(self):
-        #TODO: fill out def
-        # Dele opp points_to_visit i paths. Points_to_visit ser slik ut f.eks.:
-        # [(xA,yA,zA), (x1,y1,z1), (x2,y2,z2), (xB, yB, zB)] (Kun ett equipment)
-        # Blir da path mellom punkt A-1. og punkt 2-B. Mellom 1 og 2 er det et equipment
-        
-        # Dette er ikke ferdig, kun en start på en tankegang..
-        # list_of_paths = [] #vil bli: [[path1], [path2]] = [[pointA, point1], [point2, pointB]]
-        # for i in range(0, len(self.points_to_visit)): #må få denne til å lage path mellom to og to
-        #     list_of_paths.append([points_to_visit])
-        
-        return list_of_paths
+    def __init__(self, end_points):
+        """ Simple object to contain a path between endpoint and eq, or eq and eq, or eq and endpoint. """
+        self.end_points = end_points
 
-    def get_next_direction(self, value_1, value_2):
-        #TODO: fill out def
-        # bestemme om vi skal ta inn hele punkter (x,y,z) eller koordinatverdier (x) el (y) el (z)
-        # Sjekker de to opp mot hverandre hvor de ligger i forhold til hverandre,
-        # og finner ut hvordan pathen skal gå.
-        # Typ: x1 = 0, x2 = 5, da må path bevege seg fra 0 til 5 i x retn (???)
+    def gen_path(self):
+        """ Populate self.path_between_points[] with points to connect the endpoints. """
+        path_between_endpoints = []
         
-        return
+        for i in range (0, len(self.end_points), 2):
+            p1 = self.end_points[i]
+            p2 = self.end_points[i+1]
+            self.complete_path.append(self.gen_path_x(p1, p2))
+            self.complete_path.append(self.gen_path_y(p1, p2))
+            self.complete_path.append(self.gen_path_z(p1, p2))
+        
+        return self.complete_path
+
+    def gen_path_x(self, p1, p2):
+        """ Compares x-coordinates and bridges the gap """
+        points_x_ok = []
+        points_x_ok.append(p1)
+        
+        if((p1.x - p2.x) == 0):
+            points_x_ok.append(p2)
+            return points_x_ok
+
+        elif((p1.x - p2.x) < 0):
+            # Hva skal skje her?
+            pass
+
+        elif((p1.x - p2.x) > 0):
+            # Hva skal skje her?
+            pass
+
+        return points_x_ok
+
+    def gen_path_y(self, p1, p2):
+        """ Compares y-coordinates and bridges the gap """
+        points_y_ok = []
+        points_y_ok.append(p1)
+        
+        if((p1.y - p2.y) == 0):
+            points_y_ok.append(p2)
+            return points_y_ok
+
+        elif((p1.y - p2.y) < 0):
+            # Hva skal skje her?
+            pass
+
+        elif((p1.y - p2.y) > 0):
+            # Hva skal skje her?
+            pass
+
+        return points_y_ok
+
+    def gen_path_z(self, p1, p2):
+        """ Compares z-coordinates and bridges the gap """
+        points_z_ok = []
+        points_z_ok.append(p1)
+        
+        if((p1.z - p2.z) == 0):
+            points_z_ok.append(p2)
+            return points_z_ok
+
+        elif((p1.z - p2.z) < 0):
+            # Hva skal skje her?
+            pass
+
+        elif((p1.z - p2.z) > 0):
+            # Hva skal skje her?
+            pass
+
+        return points_z_ok
