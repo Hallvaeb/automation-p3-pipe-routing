@@ -20,20 +20,26 @@ class DFABuilder():
 			DFABuilder.append_path_to_DFA(path)
 		DFABuilder.sweep_paths()
 			
-	def append_env_to_DFA(obj):
+	def append_env_to_DFA(env):
 		""" Append environment to the current DFA file """
 		# TODO: implement
 		pass
 
-	def append_equ_to_DFA(obj):
-		""" Append environment to the current DFA file """
+	def append_equ_to_DFA(equs):
+		""" Append equ to the current DFA file """
 		# TODO: implement
 		pass
 
-	def append_pipe_to_DFA(obj):
-		""" Append environment to the current DFA file """
-		# TODO: implement
+	def append_pipe_to_DFA(pipe):
+		""" Append pipe to the current DFA file """
+		f = open("templates/Pipe.dfa", "r")
+		txt = f.read()
+		txt = txt.replace("<CURVE_RADIUS>", pipe.elbow_curve_radius)
+		txt = txt.replace("<OUTER_RADIUS>", pipe.diameter_outer)
+		txt = txt.replace("<INNER_RADIUS>", pipe.diameter_inner)
 		pass
+
+
 
 	def append_path_to_DFA(path):
 		""" Append path to the current DFA file """
