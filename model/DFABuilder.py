@@ -9,23 +9,15 @@ from model.Pipe import Pipe
 class DFABuilder():
 
 
-	def generate_dfa(objects):
-		""" Generates the DFA file. objects should be Environment, Equipment, Pipe or PathGenerator instances. """
-		for obj in objects:
-			if isinstance(obj, Environment):
-				DFABuilder.append_env_to_DFA(obj)
-
-			elif isinstance(obj, Equipment):
-				DFABuilder.append_equ_to_DFA(obj)
-
-			elif isinstance(obj, Pipe):
-				DFABuilder.append_pipe_to_DFA(obj)
-			elif isinstance(obj, PathGenerator):
-				for path in obj.paths:
-					DFABuilder.append_path_to_DFA(path)
-			else:
-				print("generate_dfa() in DFABuilder didnt recognice obj as env, equ, or pipe")	
-		
+	def generate_dfa(env, equs, pipe, complete_paths):
+		""" Generates the DFA file. 
+		Input: Environment, List<Equipment>, Pipe, List<List<tuples/point>>. """
+		DFABuilder.append_env_to_DFA(env)
+		for equ in equs:
+			DFABuilder.append_equ_to_DFA(equ)
+		DFABuilder.append_pipe_to_DFA(pipe)
+		for path in complete_paths:
+			DFABuilder.append_path_to_DFA(path)
 		DFABuilder.sweep_paths()
 			
 	def append_env_to_DFA(obj):

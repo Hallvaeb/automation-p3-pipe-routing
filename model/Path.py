@@ -28,15 +28,15 @@ class Path():
         points_x_ok = []
         points_x_ok.append(p1)
         
-        if((p1.x - p2.x) == 0):
+        if((p1[0] - p2[0]) == 0):
             points_x_ok.append(p2)
             return points_x_ok
 
-        elif((p1.x - p2.x) < 0):
+        elif((p1[0] - p2[0]) < 0):
             # Hva skal skje her?
             pass
 
-        elif((p1.x - p2.x) > 0):
+        elif((p1[0] - p2[0]) > 0):
             # Hva skal skje her?
             pass
 
@@ -47,15 +47,15 @@ class Path():
         points_y_ok = []
         points_y_ok.append(p1)
         
-        if((p1.y - p2.y) == 0):
+        if((p1[1] - p2[1]) == 0):
             points_y_ok.append(p2)
             return points_y_ok
 
-        elif((p1.y - p2.y) < 0):
+        elif((p1[1] - p2[1]) < 0):
             # Hva skal skje her?
             pass
 
-        elif((p1.y - p2.y) > 0):
+        elif((p1[1] - p2[1]) > 0):
             # Hva skal skje her?
             pass
 
@@ -66,15 +66,15 @@ class Path():
         points_z_ok = []
         points_z_ok.append(p1)
         
-        if((p1.z - p2.z) == 0):
+        if((p1[2] - p2[2]) == 0):
             points_z_ok.append(p2)
             return points_z_ok
 
-        elif((p1.z - p2.z) < 0):
+        elif((p1[2] - p2[2]) < 0):
             # Hva skal skje her?
             pass
 
-        elif((p1.z - p2.z) > 0):
+        elif((p1[2] - p2[2]) > 0):
             # Hva skal skje her?
             pass
 

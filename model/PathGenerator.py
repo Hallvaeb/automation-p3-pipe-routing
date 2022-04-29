@@ -7,32 +7,30 @@ class PathGenerator():
 	
 	
 	points_to_visit = []
-	paths = []
+	complete_paths = []
 	
 	def __init__(self, env, list_of_equ):
-		'''populates points_to_visit[], and calls fill_paths() to populate paths[]'''
+		'''populates points_to_visit[], and calls fill_paths() to populate completepaths[]'''
 		self.points_to_visit.append(env.point_A)
 		for equ in list_of_equ:
-			self.points_to_visit.append(equ.point_in, equ.point_out)
+			self.points_to_visit.append(equ.point_in)
+			self.points_to_visit.append(equ.point_out)
 		self.points_to_visit.append(env.point_B)
-		self.fill_paths(self)
+		self.fill_paths()
 	
 	def fill_paths(self):
-		""" Helper function to populate self.paths[]."""
+		""" Helper function to populate self.completepaths[]."""
 		for i in range (0, len(self.points_to_visit), 2):
 			points_in_path = []
 			points_in_path.append(self.points_to_visit[i])
 			points_in_path.append(self.points_to_visit[i+1])
 			path = Path(points_in_path)
-			self.paths.append(path)
+			self.complete_paths.append(path.gen_path())
 		
-		for path in self.paths:
-			self.paths.append(path.gen_path())
-
 		""" Kommentarene under er skrevet av ? før Hallvard skrev kodebiten rett over
 		Jeg tenker vi har et eget objekt, path, som vi lager for hvert path. Usikker på relevanse av resten av denne klassen."""
 
-		# Dele opp points_to_visit i paths. Points_to_visit ser slik ut f.eks.:
+		# Dele opp points_to_visit i complete_paths. Points_to_visit ser slik ut f.eks.:
 		# [(xA,yA,zA), (x1,y1,z1), (x2,y2,z2), (xB, yB, zB)] (Kun ett equipment)
 		# Blir da path mellom punkt A-1. og punkt 2-B. Mellom 1 og 2 er det et equipment
 		# Dette er ikke ferdig, kun en start på en tankegang..

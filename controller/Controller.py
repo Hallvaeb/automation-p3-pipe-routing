@@ -13,9 +13,11 @@ class Controller:
 	def construct(env_args, equs_args, pipe_args):
 		""" Makes neccessary calls to carry out the users commands. This class contains little logic. """
 
+		print("Controller construct running with args: ", env_args, equs_args, pipe_args)
 
 		# Environment
 		env = Environment(position = env_args[0], point_A = env_args[1], 		point_B = env_args[2], length = env_args[3], width = env_args[4], height = env_args[5])
+		print("Environment made with args: position =", env_args[0], "point_A =", env_args[1], "point_B =", env_args[2], "length =", env_args[3], "width =", env_args[4], "height =", env_args[5])
 		
 		# Equipment
 		equs = []
@@ -29,12 +31,5 @@ class Controller:
 		# Create paths
 		path_generator = PathGenerator(env, equs)
 
-		# Make list for DFABuilder input and build the DFA file
-		objects = []
-		objects.append(env)
-		for equ in equs:
-			objects.append(equ)
-		objects.append(pipe)
-
-
-		DFABuilder.generate_dfa([])
+		# Create DFA
+		DFABuilder.generate_dfa(env, equs, pipe, path_generator.complete_paths)
