@@ -37,8 +37,30 @@ class DFABuilder():
 
 	def append_path_to_DFA(path):
 		""" Append path to the current DFA file """
-		# TODO: implement
-		pass
+#-------------------------- ARCS ---------------------------------------------
+		for el in path:
+			if len(el) == 3:
+				elbow = []
+				elbow.append(el)
+				for elb in straights:
+					f = open("templates/Arc.dfa", "r")
+					txt = f.read()
+					txt = txt.replace("CENTER", elb[0])
+					txt = txt.replace("X_ARC_VECTOR", elb[1])
+					txt = txt.replace("Y_ARC_VECTOR", elb[2])
+					pass
+
+#-------------------------- LINES -----------------------------------------------
+		for el in path:
+			if len(el) == 2:
+				straights = []
+				straights.append(el)
+				for st in straights:
+					f = open("templates/Line.dfa", "r")
+					txt = f.read()
+					txt = txt.replace("START_POINT", st[0])
+					txt = txt.replace("END_POINTT", st[1])
+					pass
 
 	def sweep_paths():
 		""" Sweeps on the paths to make the pipes """

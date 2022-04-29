@@ -4,5 +4,6 @@
   start_angle, 0;
   end_angle, 90;
   center, point<ARC_CENTER>;
-  Y_Axis, Vector<ARC_VECTOR>;
+  x_Axis, Vector<X_ARC_VECTOR>;
+  Y_Axis, Vector<Y_ARC_VECTOR>;
 };
