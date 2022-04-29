@@ -1,0 +1,46 @@
+(number parameter) curve_radius: 90;
+(number parameter) outer_radius: <OUTER_RADIUS>;
+(number parameter) inner_radius: <INNER_RADIUS>;
+
+(child) diaUt: { 
+  class, ug_arc;
+  radius, outer_radius:;
+  start_angle, 0;
+  end_angle, 360;
+  center, point<PROFILE_CENTER>;
+};
+
+(child) diaIn: { 
+  class, ug_arc;
+  radius, inner_radius:;
+  start_angle, 0;
+  end_angle, 360;
+  center, point<PROFILE_CENTER>;
+};
+
+(child) pipe_path: {
+  Class, ug_curve_join;
+  profile, {<PIPE_PATH>};
+};
+
+(child) outer_sweep: {
+  class, ug_swept;
+  guide, {{forward, pipe_path:}};
+  section, {{forward, diaUt:}};
+  scaling, {scale_constant, 1};
+  alignment_init, parameter;
+  orientation, {orientation_fixed};
+  tolerances, {0, 0, 0};
+};
+
+(child) inner_sweep: {
+  class, ug_swept;
+  guide, {{forward, pipe_path:}};
+  section, {{forward, diaIn:}};
+  scaling, {scale_constant, 1};
+  alignment_init, parameter;
+  orientation, {orientation_fixed};
+  tolerances, {0, 0, 0};
+  Operation, subtract;
+  Target, {outer_sweep:};
+};
