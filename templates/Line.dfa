@@ -1,0 +1,5 @@
+(Child) <LINE>: {
+ Class, ug_line; 
+ Start_Point, Point<START_POINT>;  
+ End_Point, Point<END_POINT>; 
+}; 
