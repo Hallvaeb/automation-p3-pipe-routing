@@ -1,9 +1,9 @@
 #! NX/KF 4.0
 DefClass: <ENV_ID> (ug_base_part);
 
-(number parameter) my_height: <HEIGHT> + <Z_POS>;
-(number parameter) my_width: <WIDTH> + <Y_POS>;
-(number parameter) my_length: <LENGTH> + <X_POS>;
+(number parameter) my_height: <HEIGHT>;
+(number parameter) my_width: <WIDTH>;
+(number parameter) my_length: <LENGTH>;
 
 (child) wall_1: 
     {
@@ -11,7 +11,7 @@ DefClass: <ENV_ID> (ug_base_part);
         length, 5;
         width, my_width: + 5;
         height, my_height:;
-		Origin, Point(my_length:,0,5);
+		Origin, Point(my_length: + <X_POS>, <Y_POS>, 5 + <Z_POS>);
     };
 
 
@@ -21,7 +21,7 @@ DefClass: <ENV_ID> (ug_base_part);
         length, 5;
         width, my_width:;
         height, my_height:;
-		Origin, Point(0,0,5);
+		Origin, Point(<X_POS>, <Y_POS>, 5 + <Z_POS>);
     };
 
 (child) wall_3: 
@@ -30,7 +30,7 @@ DefClass: <ENV_ID> (ug_base_part);
         length, my_length:;
         width, 5;
         height, my_height:;
-		Origin, Point(0,0,5);
+		Origin, Point(<X_POS>, <Y_POS>, 5 + <Z_POS>);
     };
 
 
@@ -41,7 +41,7 @@ DefClass: <ENV_ID> (ug_base_part);
         length, my_length:;
         width, 5;
         height, my_height:;
-		Origin, Point(0,my_width:,5);
+		Origin, Point(<X_POS>, my_width: + <Y_POS>, 5 + <Z_POS>);
     };
 
 
@@ -51,7 +51,7 @@ DefClass: <ENV_ID> (ug_base_part);
         length, my_length:;
         width, my_width:;
         height, 5;
-		Origin, Point(0,0,my_height:);
+		Origin, Point(<X_POS>, <Y_POS>, my_height: + <Z_POS>);
     };
 	
 
@@ -61,6 +61,6 @@ DefClass: <ENV_ID> (ug_base_part);
         length, my_length: + 5;
         width, my_width: + 5;
         height, 5;
-		Origin, Point(0,0,0);
+		Origin, Point(<X_POS>, <Y_POS>, <Z_POS>);
     };
 	
