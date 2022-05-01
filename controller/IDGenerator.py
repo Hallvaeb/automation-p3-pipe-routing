@@ -3,7 +3,7 @@ import datetime
 
 class IDGenerator():
     
-    def create_dfa_zone_ID():
+    def create_dfa_element_ID(element):
         """
             Used for DFA file children names
             Returns "zone_rrrrrrrrr" where r = random(0,9) 
@@ -18,7 +18,7 @@ class IDGenerator():
         r8 = str(random.randint(0, 9))
         r9 = str(random.randint(0, 9))
         r_all = r1+r2+r3+r4+r5+r6+r7+r8+r9
-        id = "zone" + r_all
+        id = element + r_all
         #print("ID generated for " +self.type+", id = " + id)
         return id
     

@@ -1,0 +1,66 @@
+#! NX/KF 4.0
+DefClass: <ENV_ID> (ug_base_part);
+
+(number parameter) my_height: <HEIGHT>;
+(number parameter) my_width: <WIDTH>;
+(number parameter) my_length: <LENGTH>;
+
+(child) wall_1: 
+    {
+        class, ug_block;
+        length, 5;
+        width, my_width: + 5;
+        height, my_height:;
+		Origin, Point(my_length:,0,5);
+    };
+
+
+(child) wall_2: 
+    {
+        class, ug_block;
+        length, 5;
+        width, my_width:;
+        height, my_height:;
+		Origin, Point(0,0,5);
+    };
+
+(child) wall_3: 
+    {
+        class, ug_block;
+        length, my_length:;
+        width, 5;
+        height, my_height:;
+		Origin, Point(0,0,5);
+    };
+
+
+
+(child) wall_4: 
+    {
+        class, ug_block;
+        length, my_length:;
+        width, 5;
+        height, my_height:;
+		Origin, Point(0,my_width:,5);
+    };
+
+
+(child) roof: 
+    {
+        class, ug_block;
+        length, my_length:;
+        width, my_width:;
+        height, 5;
+		Origin, Point(0,0,my_height:);
+    };
+	
+
+(child) floor: 
+    {
+        class, ug_block;
+        length, my_length: + 5;
+        width, my_width: + 5;
+        height, 5;
+		Origin, Point(0,0,0);
+    };
+	

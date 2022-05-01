@@ -1,5 +1,6 @@
 
 
+from itertools import product
 from model.Environment import Environment
 from model.Equipment import Equipment
 from model.PathGenerator import PathGenerator
@@ -25,15 +26,41 @@ class DFABuilder():
 			DFABuilder.append_path_to_DFA(path)
 		DFABuilder.sweep_paths()
 			
-	def append_env_to_DFA(env):
+	def append_env_to_DFA(env, design_id):
 		""" Append environment to the current DFA file """
-		# TODO: implement
-		pass
+		env_ID = IDGenerator.create_dfa_element_ID("environment")
+		f = open(path_to_dfa_folder + "templates/Environment.dfa", "r")
+		txt = f.read()
+		txt = txt.replace("<ENV_ID>", env_ID)
+		txt = txt.replace("<HEIGHT>", env[4])
+		txt = txt.replace("<WIDTH>", env[5])
+		txt = txt.replace("<LENGTH>", env[6])
+		f.close()
 
-	def append_equ_to_DFA(equs):
+		f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
+		f.write(txt)
+		f.close
+		return design_id
+
+	def append_equ_to_DFA(equs, design_id):
 		""" Append equ to the current DFA file """
-		# TODO: implement
-		pass
+		for equ in equs:
+			equ_ID = IDGenerator.create_dfa_element_ID("equipment")
+			f = open(path_to_dfa_folder + "templates/Equipments.dfa", "r")
+			txt = f.read()
+			txt = txt.replace("<ENV_ID>", equ_ID)
+			txt = txt.replace("<X_POS>", equ[1][0])
+			txt = txt.replace("<Y_POS>", equ[1][1])
+			txt = txt.replace("<Z_POS>", equ[1][2])
+			txt = txt.replace("<HEIGHT>", equ[4])
+			txt = txt.replace("<WIDTH>", equ[5])
+			txt = txt.replace("<LENGTH>", equ[6])
+			f.close()
+
+			f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
+			f.write(txt)
+			f.close
+			return design_id
 
 	def append_pipe_to_DFA(pipe):
 		""" Append pipe to the current DFA file """
@@ -61,37 +88,64 @@ class DFABuilder():
 
 
 
-	def append_path_to_DFA(path):
+	def append_path_to_DFA(path, design_id):
 		""" Append path to the current DFA file """
+		paths_to_sweep = []
 #-------------------------- ARCS ---------------------------------------------
 		for el in path:
 			if len(el) == 3:
 				elbow = []
 				elbow.append(el)
 				for elb in straights:
-					f = open("templates/Arc.dfa", "r")
+					elb_ID = IDGenerator.create_dfa_element_ID("elbow")
+					f = open(path_to_dfa_folder + "templates/Arc.dfa", "r")
 					txt = f.read()
+					txt = txt.replace("<CURVE>", elb_ID)
 					txt = txt.replace("CENTER", elb[0])
 					txt = txt.replace("X_ARC_VECTOR", elb[1])
 					txt = txt.replace("Y_ARC_VECTOR", elb[2])
-					pass
+					f.close()
+
+					f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a") #design_ID is created in append_pipe_to_DFA and returned. need to fetch it form there.
+					f.write(txt)
+					f.close
+					paths_to_sweep.append(elb_ID)
 
 #-------------------------- LINES -----------------------------------------------
-		for el in path:
 			if len(el) == 2:
 				straights = []
 				straights.append(el)
 				for st in straights:
-					f = open("templates/Line.dfa", "r")
+					str_ID = IDGenerator.create_dfa_element_ID("straigth")
+					f = open(path_to_dfa_folder + "templates/Line.dfa", "r")
 					txt = f.read()
 					txt = txt.replace("START_POINT", st[0])
 					txt = txt.replace("END_POINTT", st[1])
-					pass
+					f.close()
 
-	def sweep_paths():
+					f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a") #design_ID is created in append_pipe_to_DFA and returned. need to fetch it form there.
+					f.write(txt)
+					f.close
+					paths_to_sweep.append(str_ID)
+
+		return paths_to_sweep
+
+					
+
+	def sweep_paths(paths_to_sweep, design_id):
 		""" Sweeps on the paths to make the pipes """
-		# TODO: implement
-		pass
+		path = ''
+		for e in paths_to_sweep:
+    		
+			path += e +', '
+		path = path[:-2]
+		f = open(path_to_dfa_folder + "templates/Sweep.dfa", "r")
+		txt = f.read()
+		txt = txt.replace("<PIPE_PATH>", path)
+		f.close()
 
-p1 = Pipe(25, 20, 90)
-DFABuilder.append_pipe_to_DFA(p1)
+		f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
+		f.write()
+		f.close()
+		
+
