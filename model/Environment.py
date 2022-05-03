@@ -7,6 +7,6 @@ class Environment():
         self.position = position
         self.point_A = point_A
         self.point_B = point_B
-        self.lenght = length
+        self.length = length
         self.width = width
         self.height = height

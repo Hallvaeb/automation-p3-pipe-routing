@@ -1,0 +1,131 @@
+#! NX/KF 4.0
+DefClass: design_2022050315355492 (ug_base_part);   (number parameter) curve_radius: 90;
+(number parameter) outer_radius: 90;
+(number parameter) inner_radius: 80;
+(number parameter) my_height_environment599845211: 10000;
+(number parameter) my_width_environment599845211: 10000;
+(number parameter) my_length_environment599845211: 10000;
+
+(child) wall_1_environment599845211: 
+    {
+        class, ug_block;
+        length, 5;
+        width, my_width_environment599845211: + 5;
+        height, my_height_environment599845211:;
+		Origin, Point(my_length_environment599845211:,0,5);
+    };
+
+
+(child) wall_2_environment599845211: 
+    {
+        class, ug_block;
+        length, 5;
+        width, my_width_environment599845211:;
+        height, my_height_environment599845211:;
+		Origin, Point(0,0,5);
+    };
+
+(child) wall_3_environment599845211: 
+    {
+        class, ug_block;
+        length, my_length_environment599845211:;
+        width, 5;
+        height, my_height_environment599845211:;
+		Origin, Point(0,0,5);
+    };
+
+
+
+(child) wall_4_environment599845211: 
+    {
+        class, ug_block;
+        length, my_length_environment599845211:;
+        width, 5;
+        height, my_height_environment599845211:;
+		Origin, Point(0,my_width_environment599845211:,5);
+    };
+
+
+(child) roof_environment599845211: 
+    {
+        class, ug_block;
+        length, my_length_environment599845211:;
+        width, my_width_environment599845211:;
+        height, 5;
+		Origin, Point(0,0,my_height_environment599845211:);
+    };
+	
+
+(child) floor_environment599845211: 
+    {
+        class, ug_block;
+        length, my_length_environment599845211: + 5;
+        width, my_width_environment599845211: + 5;
+        height, 5;
+		Origin, Point(0,0,0);
+    };
+	
+
+(number parameter) my_height_equipment320954100: 100;
+(number parameter) my_width_equipment320954100: 200;
+(number parameter) my_length_equipment320954100: 100;
+
+(child) wall_1_equipment320954100: 
+    {
+        class, ug_block;
+        length, 5;
+        width, my_width_equipment320954100: + 5;
+        height, my_height_equipment320954100:;
+		Origin, Point(my_length_equipment320954100: + 100, 100, 5 + 0);
+    };
+
+
+(child) wall_2_equipment320954100: 
+    {
+        class, ug_block;
+        length, 5;
+        width, my_width_equipment320954100:;
+        height, my_height_equipment320954100:;
+		Origin, Point(100, 100, 5 + 0);
+    };
+
+(child) wall_3_equipment320954100: 
+    {
+        class, ug_block;
+        length, my_length_equipment320954100:;
+        width, 5;
+        height, my_height_equipment320954100:;
+		Origin, Point(100, 100, 5 + 0);
+    };
+
+
+
+(child) wall_4_equipment320954100: 
+    {
+        class, ug_block;
+        length, my_length_equipment320954100:;
+        width, 5;
+        height, my_height_equipment320954100:;
+		Origin, Point(100, my_width_equipment320954100: + 100, 5 + 0);
+    };
+
+
+(child) roof_equipment320954100: 
+    {
+        class, ug_block;
+        length, my_length_equipment320954100:;
+        width, my_width_equipment320954100:;
+        height, 5;
+		Origin, Point(100, 100, my_height_equipment320954100: + 0);
+    };
+	
+
+(child) floor_equipment320954100: 
+    {
+        class, ug_block;
+        length, my_length_equipment320954100: + 5;
+        width, my_width_equipment320954100: + 5;
+        height, 5;
+		Origin, Point(100, 100, 0);
+    };
+	
