@@ -1,6 +1,6 @@
 
 
-from DFABuilder import DFABuilder
+from controller.DFABuilder import DFABuilder
 from controller.PathGenerator import PathGenerator
 from model.Pipe import Pipe
 from model.Environment import Environment
