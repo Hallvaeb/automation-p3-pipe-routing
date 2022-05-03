@@ -31,7 +31,6 @@ class Path():
         
         if((p1[0] - p2[0]) == 0):
             # If they are the same x-coordinate nothing needs to be done except turn for the right y-value.
-            points_x_ok.append(p2)
             return points_x_ok
 
         elif((p1[0] - p2[0]) > 0):
@@ -41,6 +40,10 @@ class Path():
         elif((p1[0] - p2[0]) < 0):
             # p2.x is largest, will need to move to p2.
             # Hva skal skje her?
+            if(p1[1] - p2[1] < 0):
+                # Trenger kurve.
+                p3 = (p2[0]-p1[0], p1[1], p1[2])
+                points_x_ok.append()
             pass
 
         return points_x_ok
