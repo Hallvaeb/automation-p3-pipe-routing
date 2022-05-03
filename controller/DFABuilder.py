@@ -98,7 +98,7 @@ class DFABuilder():
 				elbow.append(el)
 				for elb in straights:
 					elb_ID = IDGenerator.create_dfa_element_ID("elbow")
-					f = open(path_to_dfa_folder + "templates/Arc.dfa", "r")
+					f = open(path_to_dfa_folder + "templates/Elbow.dfa", "r")
 					txt = f.read()
 					txt = txt.replace("<CURVE>", elb_ID)
 					txt = txt.replace("CENTER", elb[0])
@@ -117,7 +117,7 @@ class DFABuilder():
 				straights.append(el)
 				for st in straights:
 					str_ID = IDGenerator.create_dfa_element_ID("straigth")
-					f = open(path_to_dfa_folder + "templates/Line.dfa", "r")
+					f = open(path_to_dfa_folder + "templates/Straight.dfa", "r")
 					txt = f.read()
 					txt = txt.replace("START_POINT", st[0])
 					txt = txt.replace("END_POINTT", st[1])
