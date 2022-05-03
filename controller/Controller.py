@@ -1,7 +1,7 @@
 
 
-from controller.DFABuilder import DFABuilder
-from model.PathGenerator import PathGenerator
+from model.DFABuilder import DFABuilder
+from controller.PathGenerator import PathGenerator
 from model.Pipe import Pipe
 from model.Environment import Environment
 from model.Equipment import Equipment
@@ -26,10 +26,10 @@ class Controller:
 		
 		# Pipe
 		pipe = Pipe(diameter_outer = pipe_args[0], diameter_inner = 
-		pipe_args[1])
+		pipe_args[1], elbow_curve_radius = pipe_args[2])
 
 		# Create paths
-		path_generator = PathGenerator(env, equs)
+		complete_paths = PathGenerator(env, equs, pipe).complete_paths
 
 		# Create DFA
-		DFABuilder.generate_dfa(env, equs, pipe, path_generator.complete_paths)
+		DFABuilder.generate_dfa(env, equs, pipe, complete_paths)

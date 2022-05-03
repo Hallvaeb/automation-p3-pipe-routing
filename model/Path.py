@@ -6,14 +6,13 @@ class Path():
     end_points = []
     complete_path = []
     
-    def __init__(self, end_points):
+    def __init__(self, end_points, pipe):
         """ Simple object to contain a path between endpoint and eq, or eq and eq, or eq and endpoint. """
         self.end_points = end_points
+        self.pipe = pipe
 
     def gen_path(self):
         """ Populate self.path_between_points[] with points to connect the endpoints. """
-        path_between_endpoints = []
-        
         for i in range (0, len(self.end_points), 2):
             p1 = self.end_points[i]
             p2 = self.end_points[i+1]
@@ -26,17 +25,21 @@ class Path():
     def gen_path_x(self, p1, p2):
         """ Compares x-coordinates and bridges the gap """
         points_x_ok = []
+
+        # We always start from p1
         points_x_ok.append(p1)
         
         if((p1[0] - p2[0]) == 0):
+            # If they are the same x-coordinate nothing needs to be done except turn for the right y-value.
             points_x_ok.append(p2)
             return points_x_ok
 
-        elif((p1[0] - p2[0]) < 0):
-            # Hva skal skje her?
+        elif((p1[0] - p2[0]) > 0):
+            # p1.x is larger than p2.x, we need 
             pass
 
-        elif((p1[0] - p2[0]) > 0):
+        elif((p1[0] - p2[0]) < 0):
+            # p2.x is largest, will need to move to p2.
             # Hva skal skje her?
             pass
 

@@ -2,7 +2,7 @@
 
 from model.Environment import Environment
 from model.Equipment import Equipment
-from model.PathGenerator import PathGenerator
+from controller.PathGenerator import PathGenerator
 from model.Pipe import Pipe
 
 
