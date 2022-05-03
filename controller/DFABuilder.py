@@ -17,14 +17,15 @@ class DFABuilder():
 	def generate_dfa(env, equs, pipe, complete_paths):
 		""" Generates the DFA file. 
 		Input: Environment, List<Equipment>, Pipe, List<List<tuples/point>>. """
-		DFABuilder.append_pipe_to_DFA(pipe)
-		DFABuilder.append_env_to_DFA(env)
-		for equ in equs:
-			DFABuilder.append_equ_to_DFA(equ)
+		design_id = DFABuilder.append_pipe_to_DFA(pipe)
+		DFABuilder.append_env_to_DFA(env, design_id)
+		print(equs)
 		
-		for path in complete_paths:
-			DFABuilder.append_path_to_DFA(path)
-		DFABuilder.sweep_paths()
+		DFABuilder.append_equ_to_DFA(equs, design_id)
+		
+		#for path in complete_paths:
+			#DFABuilder.append_path_to_DFA(path)
+		#DFABuilder.sweep_paths()
 			
 	def append_env_to_DFA(env, design_id):
 		""" Append environment to the current DFA file """
@@ -32,9 +33,9 @@ class DFABuilder():
 		f = open(path_to_dfa_folder + "templates/Environment.dfa", "r")
 		txt = f.read()
 		txt = txt.replace("<ENV_ID>", env_ID)
-		txt = txt.replace("<HEIGHT>", env[4])
-		txt = txt.replace("<WIDTH>", env[5])
-		txt = txt.replace("<LENGTH>", env[6])
+		txt = txt.replace("<HEIGHT>", str(env.height))
+		txt = txt.replace("<WIDTH>", str(env.width))
+		txt = txt.replace("<LENGTH>", str(env.length))
 		f.close()
 
 		f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
@@ -46,15 +47,15 @@ class DFABuilder():
 		""" Append equ to the current DFA file """
 		for equ in equs:
 			equ_ID = IDGenerator.create_dfa_element_ID("equipment")
-			f = open(path_to_dfa_folder + "templates/Equipments.dfa", "r")
+			f = open(path_to_dfa_folder + "templates/Equipment.dfa", "r")
 			txt = f.read()
-			txt = txt.replace("<ENV_ID>", equ_ID)
-			txt = txt.replace("<X_POS>", equ[1][0])
-			txt = txt.replace("<Y_POS>", equ[1][1])
-			txt = txt.replace("<Z_POS>", equ[1][2])
-			txt = txt.replace("<HEIGHT>", equ[4])
-			txt = txt.replace("<WIDTH>", equ[5])
-			txt = txt.replace("<LENGTH>", equ[6])
+			txt = txt.replace("<EQU_ID>", equ_ID)
+			txt = txt.replace("<X_POS>", str(equ.position[0]))
+			txt = txt.replace("<Y_POS>", str(equ.position[1]))
+			txt = txt.replace("<Z_POS>", str(equ.position[2]))
+			txt = txt.replace("<HEIGHT>", str(equ.height))
+			txt = txt.replace("<WIDTH>", str(equ.width))
+			txt = txt.replace("<LENGTH>", str(equ.length))
 			f.close()
 
 			f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
@@ -75,9 +76,9 @@ class DFABuilder():
 
 		f1 = open(path_to_dfa_folder + "templates/Pipe.dfa", "r")
 		txt1 = f1.read()
-		txt1 = txt1.replace("<CURVE_RADIUS>", pipe.elbow_curve_radius)
-		txt1 = txt1.replace("<OUTER_RADIUS>", pipe.diameter_outer)
-		txt1 = txt1.replace("<INNER_RADIUS>", pipe.diameter_inner)
+		txt1 = txt1.replace("<CURVE_RADIUS>", str(pipe.elbow_curve_radius))
+		txt1 = txt1.replace("<OUTER_RADIUS>", str(pipe.diameter_outer))
+		txt1 = txt1.replace("<INNER_RADIUS>", str(pipe.diameter_inner))
 		f1.close()
 
 		f1 = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")

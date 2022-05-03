@@ -1,65 +1,62 @@
-#! NX/KF 4.0
-DefClass: <ENV_ID> (ug_base_part);
+(number parameter) my_height_<ENV_ID>: <HEIGHT>;
+(number parameter) my_width_<ENV_ID>: <WIDTH>;
+(number parameter) my_length_<ENV_ID>: <LENGTH>;
 
-(number parameter) my_height: <HEIGHT>;
-(number parameter) my_width: <WIDTH>;
-(number parameter) my_length: <LENGTH>;
-
-(child) wall_1: 
+(child) wall_1_<ENV_ID>: 
     {
         class, ug_block;
         length, 5;
-        width, my_width: + 5;
-        height, my_height:;
-		Origin, Point(my_length:,0,5);
+        width, my_width_<ENV_ID>: + 5;
+        height, my_height_<ENV_ID>:;
+		Origin, Point(my_length_<ENV_ID>:,0,5);
     };
 
 
-(child) wall_2: 
+(child) wall_2_<ENV_ID>: 
     {
         class, ug_block;
         length, 5;
-        width, my_width:;
-        height, my_height:;
+        width, my_width_<ENV_ID>:;
+        height, my_height_<ENV_ID>:;
 		Origin, Point(0,0,5);
     };
 
-(child) wall_3: 
+(child) wall_3_<ENV_ID>: 
     {
         class, ug_block;
-        length, my_length:;
+        length, my_length_<ENV_ID>:;
         width, 5;
-        height, my_height:;
+        height, my_height_<ENV_ID>:;
 		Origin, Point(0,0,5);
     };
 
 
 
-(child) wall_4: 
+(child) wall_4_<ENV_ID>: 
     {
         class, ug_block;
-        length, my_length:;
+        length, my_length_<ENV_ID>:;
         width, 5;
-        height, my_height:;
-		Origin, Point(0,my_width:,5);
+        height, my_height_<ENV_ID>:;
+		Origin, Point(0,my_width_<ENV_ID>:,5);
     };
 
 
-(child) roof: 
+(child) roof_<ENV_ID>: 
     {
         class, ug_block;
-        length, my_length:;
-        width, my_width:;
+        length, my_length_<ENV_ID>:;
+        width, my_width_<ENV_ID>:;
         height, 5;
-		Origin, Point(0,0,my_height:);
+		Origin, Point(0,0,my_height_<ENV_ID>:);
     };
 	
 
-(child) floor: 
+(child) floor_<ENV_ID>: 
     {
         class, ug_block;
-        length, my_length: + 5;
-        width, my_width: + 5;
+        length, my_length_<ENV_ID>: + 5;
+        width, my_width_<ENV_ID>: + 5;
         height, 5;
 		Origin, Point(0,0,0);
     };

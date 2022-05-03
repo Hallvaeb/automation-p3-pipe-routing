@@ -7,6 +7,6 @@ class Equipment():
         self.position = position
         self.point_in = point_in
         self.point_out = point_out
-        self.lenght = length
+        self.length = length
         self.width = width
         self.height = height
