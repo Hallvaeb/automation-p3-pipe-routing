@@ -88,7 +88,7 @@ class DFABuilder():
 
 
 
-	def append_path_to_DFA(path, design_id):
+	def append_path_to_DFA(path, design_id):  #[[(2,2,2), (8,8,8)] , [(4,4,4), (1,0,0), (0,1,0)]]
 		""" Append path to the current DFA file """
 		paths_to_sweep = []
 #-------------------------- ARCS ---------------------------------------------
@@ -101,9 +101,9 @@ class DFABuilder():
 					f = open(path_to_dfa_folder + "templates/Elbow.dfa", "r")
 					txt = f.read()
 					txt = txt.replace("<CURVE>", elb_ID)
-					txt = txt.replace("CENTER", elb[0])
-					txt = txt.replace("X_ARC_VECTOR", elb[1])
-					txt = txt.replace("Y_ARC_VECTOR", elb[2])
+					txt = txt.replace("<CENTER>", elb[0])
+					txt = txt.replace("<X_ARC_VECTOR>", elb[1])
+					txt = txt.replace("<Y_ARC_VECTOR>", elb[2])
 					f.close()
 
 					f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a") #design_ID is created in append_pipe_to_DFA and returned. need to fetch it form there.
@@ -119,8 +119,8 @@ class DFABuilder():
 					str_ID = IDGenerator.create_dfa_element_ID("straigth")
 					f = open(path_to_dfa_folder + "templates/Straight.dfa", "r")
 					txt = f.read()
-					txt = txt.replace("START_POINT", st[0])
-					txt = txt.replace("END_POINTT", st[1])
+					txt = txt.replace("<START_POINT>", st[0])
+					txt = txt.replace("<END_POINTT>", st[1])
 					f.close()
 
 					f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a") #design_ID is created in append_pipe_to_DFA and returned. need to fetch it form there.
