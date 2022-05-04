@@ -45,7 +45,7 @@ pipe_diameter_inner = 250
 elbow_curve_radius = 90
 
 # Email
-email = "sigvesjo@gmail.com"
+email = "email@gmail.com"
 
 
 # INPUT END --------------------------------------------------------------------
