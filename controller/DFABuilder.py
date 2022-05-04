@@ -26,6 +26,7 @@ class DFABuilder():
 		for path in complete_paths:
 			paths_to_sweep = DFABuilder.append_path_to_DFA(path, design_id)
 		DFABuilder.sweep_paths(paths_to_sweep, design_id)
+		return design_id
 			
 	def append_env_to_DFA(env, design_id):
 		""" Append environment to the current DFA file """
