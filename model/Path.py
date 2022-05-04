@@ -19,7 +19,8 @@ class Path():
             self.complete_path.append(self.gen_path_x(p1, p2))
             # self.complete_path.append(self.gen_path_y(p1, p2))
             # self.complete_path.append(self.gen_path_z(p1, p2))
-        
+        print("self.complete_path 1")
+        print(self.complete_path)
         return self.complete_path
 
     def gen_path_x(self, p1, p2):

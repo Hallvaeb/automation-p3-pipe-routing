@@ -54,7 +54,7 @@ class UserInterface():
 		elbow_curve_radius = 90
 
 		# Email
-		email = "hallvard.bjorgen@gmail.com"
+		email = "sigvesjo@gmail.com"
 
 
 		# INPUT END --------------------------------------------------------------------
@@ -68,4 +68,4 @@ class UserInterface():
 
 		pipe_args = [pipe_diameter_outer, pipe_diameter_inner, elbow_curve_radius]
 
-		Controller.construct(env_args, equs_args, pipe_args)
+		Controller.construct(env_args, equs_args, pipe_args, email)

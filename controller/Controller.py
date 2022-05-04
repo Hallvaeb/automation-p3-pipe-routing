@@ -2,6 +2,7 @@
 
 from controller.DFABuilder import DFABuilder
 from controller.PathGenerator import PathGenerator
+from controller.EmailHandler import EmailHandler
 from model.Pipe import Pipe
 from model.Environment import Environment
 from model.Equipment import Equipment
@@ -10,9 +11,9 @@ from model.Equipment import Equipment
 class Controller: 
 	
 
-	def construct(env_args, equs_args, pipe_args):
+	def construct(env_args, equs_args, pipe_args, email):
 		""" Makes neccessary calls to carry out the users commands. This class contains little logic. """
-		
+
 		# Environment
 		env = Environment(
 			position = env_args[0], 
@@ -49,4 +50,7 @@ class Controller:
 		print(complete_paths)
 
 		# Create DFA
-		DFABuilder.generate_dfa(env, equs, pipe, complete_paths)
+		design_id = DFABuilder.generate_dfa(env, equs, pipe, complete_paths)
+
+		# Send email
+		EmailHandler.send_design_to_email(design_id, email)
