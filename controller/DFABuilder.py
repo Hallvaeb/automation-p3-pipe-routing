@@ -24,8 +24,8 @@ class DFABuilder():
 		DFABuilder.append_equ_to_DFA(equs, design_id)
 		
 		for path in complete_paths:
-			DFABuilder.append_path_to_DFA(path, design_id)
-		DFABuilder.sweep_paths()
+			paths_to_sweep = DFABuilder.append_path_to_DFA(path, design_id)
+		DFABuilder.sweep_paths(paths_to_sweep, design_id)
 			
 	def append_env_to_DFA(env, design_id):
 		""" Append environment to the current DFA file """
@@ -102,9 +102,9 @@ class DFABuilder():
 					f = open(path_to_dfa_folder + "templates/Elbow.dfa", "r")
 					txt = f.read()
 					txt = txt.replace("<CURVE>", elb_ID)
-					txt = txt.replace("<CENTER>", elb[0])
-					txt = txt.replace("<X_ARC_VECTOR>", elb[1])
-					txt = txt.replace("<Y_ARC_VECTOR>", elb[2])
+					txt = txt.replace("<CENTER>", str(elb[0]))
+					txt = txt.replace("<X_ARC_VECTOR>", str(elb[1]))
+					txt = txt.replace("<Y_ARC_VECTOR>", str(elb[2]))
 					f.close()
 
 					f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a") #design_ID is created in append_pipe_to_DFA and returned. need to fetch it form there.
@@ -120,8 +120,9 @@ class DFABuilder():
 					str_ID = IDGenerator.create_dfa_element_ID("straigth")
 					f = open(path_to_dfa_folder + "templates/Straight.dfa", "r")
 					txt = f.read()
-					txt = txt.replace("<START_POINT>", st[0])
-					txt = txt.replace("<END_POINTT>", st[1])
+					txt = txt.replace("<START_POINT>", str(st[0]))
+					txt = txt.replace("<END_POINTT>", str(st[1]))
+					txt = txt.replace("<LINE>", str_ID)
 					f.close()
 
 					f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a") #design_ID is created in append_pipe_to_DFA and returned. need to fetch it form there.
@@ -146,7 +147,7 @@ class DFABuilder():
 		f.close()
 
 		f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
-		f.write()
+		f.write(txt)
 		f.close()
 		
 

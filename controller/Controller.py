@@ -30,6 +30,8 @@ class Controller:
 
 		# Create paths
 		complete_paths = PathGenerator(env, equs, pipe).complete_paths
+		print("complete_paths")
+		print(complete_paths)
 
 		# Create DFA
 		DFABuilder.generate_dfa(env, equs, pipe, complete_paths)
