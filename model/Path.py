@@ -17,8 +17,8 @@ class Path():
             p1 = self.end_points[i]
             p2 = self.end_points[i+1]
             self.complete_path.append(self.gen_path_x(p1, p2))
-            self.complete_path.append(self.gen_path_y(p1, p2))
-            self.complete_path.append(self.gen_path_z(p1, p2))
+            # self.complete_path.append(self.gen_path_y(p1, p2))
+            # self.complete_path.append(self.gen_path_z(p1, p2))
         
         return self.complete_path
 
@@ -29,23 +29,25 @@ class Path():
         # We always start from p1
         points_x_ok.append(p1)
         
-        if((p1[0] - p2[0]) == 0):
-            # If they are the same x-coordinate nothing needs to be done except turn for the right y-value.
+        if(p1[0] == p2[0]):
+            # Same x
             return points_x_ok
 
-        elif((p1[0] - p2[0]) > 0):
-            # p1.x is larger than p2.x, we need 
-            pass
+        elif((p2[0] - p1[0]) > 0):
+            # p2 x largest
+            if(p2[1] == p1[1]):
+                # Same y
+                points_x_ok.append(p2)
 
-        elif((p1[0] - p2[0]) < 0):
-            # p2.x is largest, will need to move to p2.
+        elif((p1[0] - p2[0]) > 0):
+            # p1 x largest
             # Hva skal skje her?
             if(p1[1] - p2[1] < 0):
                 # Trenger kurve.
-                p3 = (p2[0]-p1[0], p1[1], p1[2])
-                points_x_ok.append()
+                print("p1[1] - p2[2] < 0")
+                p_new = (p2[0]-p1[0], p1[1], p1[2])
+                points_x_ok.append(p_new)
             pass
-
         return points_x_ok
 
     def gen_path_y(self, p1, p2):

@@ -23,9 +23,9 @@ class DFABuilder():
 		
 		DFABuilder.append_equ_to_DFA(equs, design_id)
 		
-		#for path in complete_paths:
-			#DFABuilder.append_path_to_DFA(path)
-		#DFABuilder.sweep_paths()
+		for path in complete_paths:
+			DFABuilder.append_path_to_DFA(path, design_id)
+		DFABuilder.sweep_paths()
 			
 	def append_env_to_DFA(env, design_id):
 		""" Append environment to the current DFA file """
