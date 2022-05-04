@@ -84,14 +84,14 @@ class DFABuilder():
 
 
 
-	def append_path_to_DFA(path, design_id):  #[[(2,2,2), (8,8,8)] , [(4,4,4), (1,0,0), (0,1,0)]]
+	def append_path_to_DFA(path, design_id):  #[[(2,0,0), (2,0,8)] , [(92,0,8), (1,0,0), (0,1,0)]]
 		""" Append path to the current DFA file """
 		paths_to_sweep = []
 #-------------------------- ARCS ---------------------------------------------
-		for el in path:
-			if len(el) == 3:
+		for elem in path:
+			if len(elem) == 3:
 				elbow = []
-				elbow.append(el)
+				elbow.append(elem)
 				for elb in straights:
 					elb_ID = IDGenerator.create_dfa_element_ID("elbow")
 					f = open(path_to_dfa_folder + "templates/Elbow.dfa", "r")
@@ -108,9 +108,9 @@ class DFABuilder():
 					paths_to_sweep.append(elb_ID)
 
 #-------------------------- LINES -----------------------------------------------
-			if len(el) == 2:
+			if len(elem) == 2:
 				straights = []
-				straights.append(el)
+				straights.append(elem)
 				for st in straights:
 					str_ID = IDGenerator.create_dfa_element_ID("straigth")
 					f = open(path_to_dfa_folder + "templates/Straight.dfa", "r")
@@ -134,7 +134,7 @@ class DFABuilder():
 		path = ''
 		for e in paths_to_sweep:
     		
-			path += e +', '
+			path += e +':, '
 		path = path[:-2]
 		f = open(path_to_dfa_folder + "templates/Sweep.dfa", "r")
 		txt = f.read()
