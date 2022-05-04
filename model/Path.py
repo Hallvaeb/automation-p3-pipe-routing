@@ -1,4 +1,4 @@
-
+import UserInterface
 
 class Path():
 
@@ -88,3 +88,15 @@ class Path():
             pass
 
         return points_z_ok
+
+
+    def calculate_path(self, p1, p1_dir, p2, p2_dir):
+        if p1[0] == p2[0]: #x is the same
+            if p1[1] < p2[1] and p1[2] < p2[2]: #p2 is in Q1 for p1
+                if p1_dir == (0,1,0) and p2_dir == (0,0,1): #one elbow
+                    self.complete_path[0] = [ p1[0], p1[1], p1[2] ]
+                    self.complete_path[1] = [ p1[0], p2[1] - UserInterface.elbow_curve_radius, p1[2]]
+                    self.complete_path[3] = [ (p1[0], p2[1] - UserInterface.elbow_curve_radius, p1[2] + UserInterface.elbow_curve_radius), (1,0,0), (0,-1,0) ]
+                    self.complete_path[4] = [ p1[0], p2[1], p1[2] + UserInterface.elbow_curve_radius]
+                    self.complete_path[5] = [ p1[0], p2[1], p2[2] ]
+        return self.complete_path
