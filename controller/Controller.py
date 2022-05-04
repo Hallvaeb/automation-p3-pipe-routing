@@ -45,12 +45,12 @@ class Controller:
 			elbow_curve_radius = pipe_args[2])
 
 		# Create paths
-		complete_paths = PathGenerator(env, equs, pipe).complete_paths
-		print("complete_paths")
-		print(complete_paths)
+		path_gen = PathGenerator(env, equs, pipe)
+		all_paths = path_gen.all_paths
+
 
 		# Create DFA
-		design_id = DFABuilder.generate_dfa(env, equs, pipe, complete_paths)
+		design_id = DFABuilder.generate_dfa(env, equs, pipe, all_paths)
 
 		# Send email
 		EmailHandler.send_design_to_email(design_id, email)

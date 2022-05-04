@@ -19,8 +19,6 @@ class DFABuilder():
 		Input: Environment, List<Equipment>, Pipe, List<List<tuples/point>>. """
 		design_id = DFABuilder.append_pipe_system_to_DFA(pipe)
 		DFABuilder.append_env_to_DFA(env, design_id)
-		print(equs)
-		
 		DFABuilder.append_equ_to_DFA(equs, design_id)
 		
 		for path in complete_paths:
@@ -92,7 +90,7 @@ class DFABuilder():
 			if len(elem) == 3:
 				elbow = []
 				elbow.append(elem)
-				for elb in straights:
+				for elb in elbow:
 					elb_ID = IDGenerator.create_dfa_element_ID("elbow")
 					f = open(path_to_dfa_folder + "templates/Elbow.dfa", "r")
 					txt = f.read()

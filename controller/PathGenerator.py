@@ -7,7 +7,8 @@ class PathGenerator():
 	
 	
 	points_to_visit = []
-	complete_paths = []
+	all_paths = []
+	path_objects = []
 	
 	def __init__(self, env, list_of_equ, pipe):
 		'''populates points_to_visit[], and calls fill_paths() to populate completepaths[]'''
@@ -19,19 +20,24 @@ class PathGenerator():
 		self.points_to_visit.append(env.point_B)
 
 		self.pipe = pipe
+		print("self.points_to_visit before fill paths")
+		print(self.points_to_visit)
 		self.fill_paths()
 	
 	def fill_paths(self):
 		""" Helper function to populate self.completepaths[], containing the paths between endpoints and eqs or between equipments."""
+		print(len(self.points_to_visit))
 		for i in range (0, len(self.points_to_visit), 2):
 			# Clear array
 			points_in_path = []
 			# Append next two points
 			points_in_path.append(self.points_to_visit[i])
 			points_in_path.append(self.points_to_visit[i+1])
+			print("points_in_path = ", points_in_path)
 			# Create a path object with the start and end for this path
 			path = Path(points_in_path, self.pipe)
-			# Ask path to make necessary turns etc to connect start to end
-			path_for_this_path = path.gen_path()
+			# To keep track of what paths we've generated
+			self.path_objects.append(path)
 			# Append this path to the list of complete paths. 
-			self.complete_paths.append(path_for_this_path)
+			self.all_paths.append(path.complete_path)
+			print("all_paths = ", self.all_paths,  ", after i = ", i)

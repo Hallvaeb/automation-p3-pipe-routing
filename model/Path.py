@@ -10,6 +10,7 @@ class Path():
         """ Simple object to contain a path between endpoint and eq, or eq and eq, or eq and endpoint. """
         self.end_points = end_points
         self.pipe = pipe
+        self.gen_path()
 
     def gen_path(self):
         """ Populate self.path_between_points[] with points to connect the endpoints. """
@@ -17,11 +18,6 @@ class Path():
             p1 = self.end_points[i]
             p2 = self.end_points[i+1]
             self.complete_path.append(self.gen_path_x(p1, p2))
-            # self.complete_path.append(self.gen_path_y(p1, p2))
-            # self.complete_path.append(self.gen_path_z(p1, p2))
-        print("self.complete_path 1")
-        print(self.complete_path)
-        return self.complete_path
 
     def gen_path_x(self, p1, p2):
         """ Compares x-coordinates and bridges the gap """

@@ -7,9 +7,6 @@ Solution will be added to the 'working_dir_folder' and sent to your email.
 
 # INPUT BEGIN ------------------------------------------------------------------
 
-# Working directory 
-working_dir_folder = "C:/Users/Eier/Github/kbe-a3/WorkingDirectory"
-
 # Environment
 env_pos = (0, 0, 0)
 env_point_A = (0, 5000, 5000)
