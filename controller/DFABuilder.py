@@ -137,6 +137,7 @@ class DFABuilder():
 		f = open(path_to_dfa_folder + "templates/Sweep.dfa", "r")
 		txt = f.read()
 		txt = txt.replace("<PIPE_PATH>", path)
+		txt = txt.replace("<PROFILE_CENTER>", "(1, 0, 0)") #TODO: oppdater med rett punkt
 		f.close()
 
 		f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
