@@ -17,7 +17,7 @@ class DFABuilder():
 	def generate_dfa(env, equs, pipe, complete_paths):
 		""" Generates the DFA file. 
 		Input: Environment, List<Equipment>, Pipe, List<List<tuples/point>>. """
-		design_id = DFABuilder.append_pipe_to_DFA(pipe)
+		design_id = DFABuilder.append_pipe_system_to_DFA(pipe)
 		DFABuilder.append_env_to_DFA(env, design_id)
 		print(equs)
 		
@@ -63,27 +63,21 @@ class DFABuilder():
 			f.close
 			return design_id
 
-	def append_pipe_to_DFA(pipe):
+	def append_pipe_system_to_DFA(pipe):
 		""" Append pipe to the current DFA file """
 		design_id = IDGenerator.create_design_ID()
 		f = open(path_to_dfa_folder + "templates/PipeSystem.dfa", "r")
 		txt = f.read()
 		txt = txt.replace("<ID>", design_id)
+		txt = txt.replace("<CURVE_RADIUS>", str(pipe.elbow_curve_radius))
+		txt = txt.replace("<OUTER_RADIUS>", str(pipe.diameter_outer))
+		txt = txt.replace("<INNER_RADIUS>", str(pipe.diameter_inner))
 		f.close()
+
 		f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "w")
 		f.write(txt)
 		f.close
 
-		f1 = open(path_to_dfa_folder + "templates/Pipe.dfa", "r")
-		txt1 = f1.read()
-		txt1 = txt1.replace("<CURVE_RADIUS>", str(pipe.elbow_curve_radius))
-		txt1 = txt1.replace("<OUTER_RADIUS>", str(pipe.diameter_outer))
-		txt1 = txt1.replace("<INNER_RADIUS>", str(pipe.diameter_inner))
-		f1.close()
-
-		f1 = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
-		f1.write(txt1)
-		f1.close
 		return design_id
 
 
