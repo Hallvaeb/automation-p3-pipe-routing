@@ -89,10 +89,13 @@ class DFABuilder():
 		paths_to_sweep = []
 #-------------------------- ARCS ---------------------------------------------
 		for elem in path:
+			#Sjekker først om elementet i listen har 3 verdier eller to
 			if len(elem) == 3:
 				elbow = []
 				elbow.append(elem)
-				for elb in straights:
+				#Putter disse elementene inn i en liste kalt elbow
+				for elb in elbow:
+					#Appender verdiene til hvert element i listen elbow til dfa.
 					elb_ID = IDGenerator.create_dfa_element_ID("elbow")
 					f = open(path_to_dfa_folder + "templates/Elbow.dfa", "r")
 					txt = f.read()
@@ -109,14 +112,15 @@ class DFABuilder():
 
 #-------------------------- LINES -----------------------------------------------
 			if len(elem) == 2:
+				#Gjør det samme for elementer med 2 verdier.
 				straights = []
 				straights.append(elem)
-				for st in straights:
+				for st in elem:
 					str_ID = IDGenerator.create_dfa_element_ID("straigth")
 					f = open(path_to_dfa_folder + "templates/Straight.dfa", "r")
 					txt = f.read()
 					txt = txt.replace("<START_POINT>", str(st[0]))
-					txt = txt.replace("<END_POINTT>", str(st[1]))
+					txt = txt.replace("<END_POINTT>", str(st[0]))
 					txt = txt.replace("<LINE>", str_ID)
 					f.close()
 
