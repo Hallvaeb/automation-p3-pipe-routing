@@ -114,7 +114,7 @@ class DFABuilder():
 					f = open(path_to_dfa_folder + "templates/Straight.dfa", "r")
 					txt = f.read()
 					txt = txt.replace("<START_POINT>", str(st[0]))
-					txt = txt.replace("<END_POINTT>", str(st[1]))
+					txt = txt.replace("<END_POINT>", str(st[1]))
 					txt = txt.replace("<LINE>", str_ID)
 					f.close()
 
