@@ -3,12 +3,10 @@
 class Path():
 
     
-    end_points = []
-    complete_path = []
-    
     def __init__(self, end_points, pipe):
         """ Simple object to contain a path between endpoint and eq, or eq and eq, or eq and endpoint. """
         self.end_points = end_points
+        self.complete_path = []
         self.pipe = pipe
         self.gen_path()
 
@@ -27,24 +25,23 @@ class Path():
         points_x_ok.append(p1)
         
         if(p1[0] == p2[0]):
-            # Same x
-            return points_x_ok
+            print("1")
+            # Same x, må sjekke y om vi trenger en sving.
 
         elif((p2[0] - p1[0]) > 0):
+            print("2")
+
             # p2 x largest
             if(p2[1] == p1[1]):
+                print("3")
                 # Same y
                 points_x_ok.append(p2)
 
         elif((p1[0] - p2[0]) > 0):
-            # p1 x largest
-            # Hva skal skje her?
+            print("4")
             if(p1[1] - p2[1] < 0):
-                # Trenger kurve.
-                print("p1[1] - p2[2] < 0")
-                p_new = (p2[0]-p1[0], p1[1], p1[2])
-                points_x_ok.append(p_new)
-            pass
+                pass
+        print("returning", points_x_ok)
         return points_x_ok
 
     def gen_path_y(self, p1, p2):
