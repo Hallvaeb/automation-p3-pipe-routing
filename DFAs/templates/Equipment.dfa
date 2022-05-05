@@ -62,3 +62,51 @@
 		Origin, Point(<X_POS>, <Y_POS>, <Z_POS>);
     };
 	
+(Child) body_color_f_<EQU_ID>: 
+{ 
+  Class, ug_body; 
+  Feature, {floor_<EQU_ID>:};  
+  Layer, 1; 
+  color, ug_askClosestColor(YELLOW);  
+};
+
+(Child) body_color_w1_<EQU_ID>: 
+{ 
+  Class, ug_body; 
+  Feature, {wall_1_<EQU_ID>:};  
+  Layer, 1; 
+  color, ug_askClosestColor(YELLOW);  
+};
+	
+(Child) body_color_w2_<EQU_ID>: 
+{ 
+  Class, ug_body; 
+  Feature, {wall_2_<EQU_ID>:};  
+  Layer, 1; 
+  color, ug_askClosestColor(YELLOW);  
+};
+
+(Child) body_color_w3_<EQU_ID>: 
+{ 
+  Class, ug_body; 
+  Feature, {wall_3_<EQU_ID>:};  
+  Layer, 1; 
+  color, ug_askClosestColor(YELLOW);  
+};
+
+(Child) body_color_w4_<EQU_ID>: 
+{ 
+  Class, ug_body; 
+  Feature, {wall_4_<EQU_ID>:};  
+  Layer, 1; 
+  color, ug_askClosestColor(YELLOW);  
+};
+
+(Child) body_color_r_<EQU_ID>: 
+{ 
+  Class, ug_body; 
+  Feature, {roof_<EQU_ID>:};  
+  Layer, 1; 
+  color, ug_askClosestColor(YELLOW);  
+};
+
