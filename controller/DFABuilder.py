@@ -62,7 +62,6 @@ class DFABuilder():
 			f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
 			f.write(txt)
 			f.close
-			return design_id
 
 	def append_pipe_system_to_DFA(pipe):
 		""" Append pipe to the current DFA file """
@@ -141,8 +140,8 @@ class DFABuilder():
 		txt = f.read()
 		txt = txt.replace("<PIPE_PATH>", path_element_string_names)
 		txt = txt.replace("<PROFILE_CENTER>", str(path.end_points[0]))
-		txt = txt.replace("<X_VECTOR>", str())
-		txt = txt.replace("<Y_VECTOR>", str())
+		txt = txt.replace("<X_VECTOR>", str((0,1,0)))
+		txt = txt.replace("<Y_VECTOR>", str((0,0,1)))
 		f.close()
 
 		f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
