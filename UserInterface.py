@@ -31,6 +31,14 @@ equ2_length = 500
 equ2_width = 1000
 equ2_height = 1000
 
+# # Equipment above
+# equ2_pos = (4000, 4500, 6500)
+# equ2_point_in = (5000, 5000, 6500)
+# equ2_point_out = (6000, 5000, 7000)
+# equ2_length = 2000
+# equ2_width = 1000
+# equ2_height = 1000
+
 # # Equipment 3
 # equ3_pos = ""
 # equ3_point_in = ""
