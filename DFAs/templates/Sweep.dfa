@@ -1,5 +1,5 @@
 
-(child) diaUt: { 
+(child) diaUt_<PATH_ID>: { 
   class, ug_arc;
   radius, outer_radius:;
   start_angle, 0;
@@ -9,7 +9,7 @@
   Y_Axis, Vector<Y_VECTOR>;
 };
 
-(child) diaIn: { 
+(child) diaIn_<PATH_ID>: { 
   class, ug_arc;
   radius, inner_radius:;
   start_angle, 0;
@@ -19,29 +19,29 @@
   Y_Axis, Vector<Y_VECTOR>;
 };
 
-(child) pipe_path: {
+(child) pipe_path_<PATH_ID>: {
   Class, ug_curve_join;
   profile, {<PIPE_PATH>};
 };
 
-(child) outer_sweep: {
+(child) outer_sweep_<PATH_ID>: {
   class, ug_swept;
-  guide, {{forward, pipe_path:}};
-  section, {{forward, diaUt:}};
+  guide, {{forward, pipe_path_<PATH_ID>:}};
+  section, {{forward, diaUt_<PATH_ID>:}};
   scaling, {scale_constant, 1};
   alignment_init, parameter;
   orientation, {orientation_fixed};
   tolerances, {0, 0, 0};
 };
 
-(child) inner_sweep: {
+(child) inner_sweep_<PATH_ID>: {
   class, ug_swept;
-  guide, {{forward, pipe_path:}};
-  section, {{forward, diaIn:}};
+  guide, {{forward, pipe_path_<PATH_ID>:}};
+  section, {{forward, diaIn_<PATH_ID>:}};
   scaling, {scale_constant, 1};
   alignment_init, parameter;
   orientation, {orientation_fixed};
   tolerances, {0, 0, 0};
   Operation, subtract;
-  Target, {outer_sweep:};
+  Target, {outer_sweep_<PATH_ID>:};
 };
