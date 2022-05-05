@@ -23,9 +23,9 @@ class DFABuilder():
 		DFABuilder.append_env_to_DFA(env, design_id)
 		DFABuilder.append_equ_to_DFA(equs, design_id)
 		
-		elements_in_path = []
-		for path in path_objects:
-			elements_in_path = DFABuilder.append_path_to_DFA(path, design_id)
+		# elements_in_path = []
+		for path in path_objects:	
+			elements_in_path = DFABuilder.append_path_to_DFA(path, design_id) 
 			DFABuilder.sweep_elements(elements_in_path, design_id, path)
 		return design_id
 			
@@ -70,7 +70,7 @@ class DFABuilder():
 		f = open(path_to_dfa_folder + "templates/PipeSystem.dfa", "r")
 		txt = f.read()
 		txt = txt.replace("<ID>", design_id)
-		txt = txt.replace("<CURVE_RADIUS>", str(pipe.elbow_curve_radius))
+		txt = txt.replace("<CURVE_RADIUS>", str(pipe.elbow_radius))
 		txt = txt.replace("<OUTER_RADIUS>", str(pipe.diameter_outer))
 		txt = txt.replace("<INNER_RADIUS>", str(pipe.diameter_inner))
 		f.close()
@@ -89,7 +89,7 @@ class DFABuilder():
 				f = open(path_to_dfa_folder + "templates/Elbow.dfa", "r")
 				txt = f.read()
 				txt = txt.replace("<CURVE>", pipe_e.ID)
-				txt = txt.replace("<CENTER>", pipe_e.center)
+				txt = txt.replace("<ARC_CENTER>", pipe_e.center)
 				txt = txt.replace("<X_ARC_VECTOR>", pipe_e.x_arc_vector)
 				txt = txt.replace("<Y_ARC_VECTOR>", pipe_e.y_arc_vector)
 				f.close()
@@ -113,16 +113,14 @@ class DFABuilder():
 		""" Sweeps on the paths to make the pipes """
 		path_element_string_names = ''
 		for e in elements_in_path:
-			print(e)
 			path_element_string_names += e + ':, '
 		path_element_string_names = path_element_string_names[:-2]
-		print("path", path_element_string_names)
 		path_ID = IDGenerator.create_dfa_element_ID("path_")
 		f = open(path_to_dfa_folder + "templates/Sweep.dfa", "r")
 		txt = f.read()
 		txt = txt.replace("<PATH_ID>", path_ID)
 		txt = txt.replace("<PIPE_PATH>", path_element_string_names) 
-		txt = txt.replace("<PROFILE_CENTER>", str(path.end_points[0])) 
+		txt = txt.replace("<PROFILE_CENTER>", str(path.point_in)) 
 		txt = txt.replace("<X_VECTOR>", str((0,1,0)))
 		txt = txt.replace("<Y_VECTOR>", str((0,0,1)))
 		f.close()
