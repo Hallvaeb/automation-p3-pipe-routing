@@ -1,15 +1,7 @@
 
 
-from itertools import product
-from model.Environment import Environment
-from model.Equipment import Equipment
-from controller.PathGenerator import PathGenerator
-from model.Pipe import Pipe
 from controller.IDGenerator import IDGenerator
 import pathlib
-
-from model.PipeElement import PipeElement
-
 path_to_dfa_folder = str(pathlib.Path().absolute().as_posix())+"/DFAs/"
 
 
@@ -22,7 +14,6 @@ class DFABuilder():
 		design_id = DFABuilder.append_pipe_system_to_DFA(pipe)
 		DFABuilder.append_env_to_DFA(env, design_id)
 		DFABuilder.append_equ_to_DFA(equs, design_id)
-		
 		elements_in_path = []
 		for path in path_objects:
 			elements_in_path = DFABuilder.append_path_to_DFA(path, design_id)
@@ -39,7 +30,6 @@ class DFABuilder():
 		txt = txt.replace("<WIDTH>", str(env.width))
 		txt = txt.replace("<LENGTH>", str(env.length))
 		f.close()
-
 		f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
 		f.write(txt)
 		f.close
@@ -59,7 +49,6 @@ class DFABuilder():
 			txt = txt.replace("<WIDTH>", str(equ.width))
 			txt = txt.replace("<LENGTH>", str(equ.length))
 			f.close()
-
 			f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
 			f.write(txt)
 			f.close
@@ -74,15 +63,14 @@ class DFABuilder():
 		txt = txt.replace("<OUTER_RADIUS>", str(pipe.diameter_outer))
 		txt = txt.replace("<INNER_RADIUS>", str(pipe.diameter_inner))
 		f.close()
-
 		f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "w")
 		f.write(txt)
 		f.close
-
 		return design_id
 
-	def append_path_to_DFA(path, design_id):  #[[(2,0,0), (2,0,8)] , [(92,0,8), (1,0,0), (0,1,0)]]
-		""" Append path to the current DFA file """
+	def append_path_to_DFA(path, design_id):  
+		""" Append path to the current DFA file 
+			Exampple path: [[(2,0,0), (2,0,8)] , [(92,0,8), (1,0,0), (0,1,0)]]"""
 		paths_to_sweep = []
 		for pipe_e in path.pipe_elements:
 			if(pipe_e.type == "elbow"):
@@ -100,14 +88,11 @@ class DFABuilder():
 				txt = txt.replace("<END_POINT>", pipe_e.end_point)
 				txt = txt.replace("<LINE>", pipe_e.ID)
 				f.close()
-
 			f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a") 
 			f.write(txt)
 			f.close
 			paths_to_sweep.append(pipe_e.ID)
-		return paths_to_sweep
-
-					
+		return paths_to_sweep		
 
 	def sweep_elements(elements_in_path, design_id, path):
 		""" Sweeps on the paths to make the pipes """
@@ -126,9 +111,6 @@ class DFABuilder():
 		txt = txt.replace("<X_VECTOR>", str((0,1,0)))
 		txt = txt.replace("<Y_VECTOR>", str((0,0,1)))
 		f.close()
-
 		f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
 		f.write(txt)
 		f.close()
-		
-
