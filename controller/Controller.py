@@ -46,11 +46,11 @@ class Controller:
 
 		# Create paths
 		path_gen = PathGenerator(env, equs, pipe)
-		all_paths = path_gen.all_paths
-
+		# all_paths = path_gen.all_paths
+		path_objects = path_gen.path_objects
 
 		# Create DFA
-		design_id = DFABuilder.generate_dfa(env, equs, pipe, all_paths)
+		design_id = DFABuilder.generate_dfa(env, equs, pipe, path_objects)
 
 		# Send email
 		EmailHandler.send_design_to_email(design_id, email)

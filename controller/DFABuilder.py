@@ -8,22 +8,24 @@ from model.Pipe import Pipe
 from controller.IDGenerator import IDGenerator
 import pathlib
 
-
 path_to_dfa_folder = str(pathlib.Path().absolute().as_posix())+"/DFAs/"
+
 
 class DFABuilder():
 
 
-	def generate_dfa(env, equs, pipe, complete_paths):
+	def generate_dfa(env, equs, pipe, path_objects):
 		""" Generates the DFA file. 
 		Input: Environment, List<Equipment>, Pipe, List<List<tuples/point>>. """
 		design_id = DFABuilder.append_pipe_system_to_DFA(pipe)
 		DFABuilder.append_env_to_DFA(env, design_id)
 		DFABuilder.append_equ_to_DFA(equs, design_id)
 		
-		for path in complete_paths:
-			paths_to_sweep = DFABuilder.append_path_to_DFA(path, design_id)
-		DFABuilder.sweep_paths(paths_to_sweep, design_id)
+		elements_in_path = []
+		for path in path_objects:
+			path_list = path.complete_path
+			elements_in_path = DFABuilder.append_path_to_DFA(path_list, design_id)
+			DFABuilder.sweep_elements(elements_in_path, design_id, path)
 		return design_id
 			
 	def append_env_to_DFA(env, design_id):
@@ -122,22 +124,23 @@ class DFABuilder():
 					f.write(txt)
 					f.close
 					paths_to_sweep.append(str_ID)
-
+		print("paths_to_sweep", paths_to_sweep )
 		return paths_to_sweep
 
 					
 
-	def sweep_paths(paths_to_sweep, design_id):
+	def sweep_elements(elements_in_path, design_id, path):
 		""" Sweeps on the paths to make the pipes """
-		path = ''
-		for e in paths_to_sweep:
-    		
-			path += e +':, '
-		path = path[:-2]
+		path_element_string_names = ''
+		for e in elements_in_path:
+			print(e)
+			path_element_string_names += e + ':, '
+		path_element_string_names = path_element_string_names[:-2]
+		print("path", path_element_string_names)
 		f = open(path_to_dfa_folder + "templates/Sweep.dfa", "r")
 		txt = f.read()
-		txt = txt.replace("<PIPE_PATH>", path)
-		txt = txt.replace("<PROFILE_CENTER>", "(0, 5000, 5000)") #TODO: oppdater med rett punkt
+		txt = txt.replace("<PIPE_PATH>", path_element_string_names) #"(0, 5000, 5000)"
+		txt = txt.replace("<PROFILE_CENTER>", str(path.end_points[0])) #TODO: oppdater med rett punkt
 		f.close()
 
 		f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
