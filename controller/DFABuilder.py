@@ -137,12 +137,14 @@ class DFABuilder():
 			path_element_string_names += e + ':, '
 		path_element_string_names = path_element_string_names[:-2]
 		print("path", path_element_string_names)
+		path_ID = IDGenerator.create_dfa_element_ID("path_")
 		f = open(path_to_dfa_folder + "templates/Sweep.dfa", "r")
 		txt = f.read()
+		txt = txt.replace("<PATH_ID>", path_ID)
 		txt = txt.replace("<PIPE_PATH>", path_element_string_names) #"(0, 5000, 5000)"
 		txt = txt.replace("<PROFILE_CENTER>", str(path.end_points[0])) #TODO: oppdater med rett punkt
-		txt = txt.replace("<X_VECTOR>", str()) #TODO: oppdater med rett punkt
-		txt = txt.replace("<Y_VECTOR>", str())
+		txt = txt.replace("<X_VECTOR>", str((0,1,0))) #TODO: oppdater med rett punkt
+		txt = txt.replace("<Y_VECTOR>", str((0,0,1)))
 		f.close()
 
 		f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
