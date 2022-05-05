@@ -8,6 +8,8 @@ from model.Pipe import Pipe
 from controller.IDGenerator import IDGenerator
 import pathlib
 
+from model.PipeElement import PipeElement
+
 path_to_dfa_folder = str(pathlib.Path().absolute().as_posix())+"/DFAs/"
 
 
@@ -23,8 +25,7 @@ class DFABuilder():
 		
 		elements_in_path = []
 		for path in path_objects:
-			path_list = path.complete_path
-			elements_in_path = DFABuilder.append_path_to_DFA(path_list, design_id)
+			elements_in_path = DFABuilder.append_path_to_DFA(path, design_id)
 			DFABuilder.sweep_elements(elements_in_path, design_id, path)
 		return design_id
 			
@@ -80,50 +81,30 @@ class DFABuilder():
 
 		return design_id
 
-
-
-
 	def append_path_to_DFA(path, design_id):  #[[(2,0,0), (2,0,8)] , [(92,0,8), (1,0,0), (0,1,0)]]
 		""" Append path to the current DFA file """
 		paths_to_sweep = []
-#-------------------------- ARCS ---------------------------------------------
-		for elem in path:
-			if len(elem) == 3:
-				elbow = []
-				elbow.append(elem)
-				for elb in elbow:
-					elb_ID = IDGenerator.create_dfa_element_ID("elbow")
-					f = open(path_to_dfa_folder + "templates/Elbow.dfa", "r")
-					txt = f.read()
-					txt = txt.replace("<CURVE>", elb_ID)
-					txt = txt.replace("<CENTER>", str(elb[0]))
-					txt = txt.replace("<X_ARC_VECTOR>", str(elb[1]))
-					txt = txt.replace("<Y_ARC_VECTOR>", str(elb[2]))
-					f.close()
+		for pipe_e in path.pipe_elements:
+			if(pipe_e.type == "elbow"):
+				f = open(path_to_dfa_folder + "templates/Elbow.dfa", "r")
+				txt = f.read()
+				txt = txt.replace("<CURVE>", pipe_e.ID)
+				txt = txt.replace("<CENTER>", pipe_e.center)
+				txt = txt.replace("<X_ARC_VECTOR>", pipe_e.x_arc_vector)
+				txt = txt.replace("<Y_ARC_VECTOR>", pipe_e.y_arc_vector)
+				f.close()
+			elif(pipe_e.type == "straight"):
+				f = open(path_to_dfa_folder + "templates/Straight.dfa", "r")
+				txt = f.read()
+				txt = txt.replace("<START_POINT>", pipe_e.start_point)
+				txt = txt.replace("<END_POINT>", pipe_e.end_point)
+				txt = txt.replace("<LINE>", pipe_e.ID)
+				f.close()
 
-					f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a") #design_ID is created in append_pipe_to_DFA and returned. need to fetch it form there.
-					f.write(txt)
-					f.close
-					paths_to_sweep.append(elb_ID)
-
-#-------------------------- LINES -----------------------------------------------
-			if len(elem) == 2:
-				straights = []
-				straights.append(elem)
-				for st in straights:
-					str_ID = IDGenerator.create_dfa_element_ID("straigth")
-					f = open(path_to_dfa_folder + "templates/Straight.dfa", "r")
-					txt = f.read()
-					txt = txt.replace("<START_POINT>", str(st[0]))
-					txt = txt.replace("<END_POINT>", str(st[1]))
-					txt = txt.replace("<LINE>", str_ID)
-					f.close()
-
-					f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a") #design_ID is created in append_pipe_to_DFA and returned. need to fetch it form there.
-					f.write(txt)
-					f.close
-					paths_to_sweep.append(str_ID)
-		print("paths_to_sweep", paths_to_sweep )
+			f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a") 
+			f.write(txt)
+			f.close
+			paths_to_sweep.append(pipe_e.ID)
 		return paths_to_sweep
 
 					

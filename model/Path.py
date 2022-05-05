@@ -1,5 +1,8 @@
 
 
+from model.PipeElement import PipeElement
+
+
 class Path():
 
     
@@ -9,6 +12,10 @@ class Path():
         self.complete_path = []
         self.pipe = pipe
         self.gen_path()
+        self.pipe_elements = []
+        for path in self.complete_path:
+            pipe_e = PipeElement(path)
+            self.pipe_elements.append(pipe_e)
 
     def gen_path(self):
         """ Populate self.path_between_points[] with points to connect the endpoints. """
