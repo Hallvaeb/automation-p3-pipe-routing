@@ -6,11 +6,14 @@ from model.PipeElement import PipeElement
 class Path():
 
     
-    def __init__(self, end_points, pipe):
+    def __init__(self, point_in, point_in_dir, point_out, point_out_dir, pipe):
         """ Simple object to contain a path between endpoint and eq, or eq and eq, or eq and endpoint. """
-        self.end_points = end_points
-        self.complete_path = []
+        self.point_in = point_in
+        self.point_in_dir = point_in_dir
+        self.point_out = point_out
+        self.point_out_dir = point_out_dir
         self.pipe = pipe
+        self.complete_path = []
         self.gen_path()
         self.pipe_elements = []
         for path in self.complete_path:
@@ -18,12 +21,20 @@ class Path():
             self.pipe_elements.append(pipe_e)
 
     def gen_path(self):
-        """ Populate self.path_between_points[] with points to connect the endpoints. """
-        for i in range (0, len(self.end_points), 2):
-            p1 = self.end_points[i]
-            p2 = self.end_points[i+1]
-            self.complete_path.append(self.gen_path_x(p1, p2))
-
+        if self.point_in[1] == self.point_out[1]: #y is the same
+            print("Dette er punktene", self.point_in, self.point_out)
+            if self.point_in[0] < self.point_out[0] and self.point_in[2] < self.point_out[2]: #self.point_out(for pathen aka slutten av path) is in Q1 for self.point_in
+                print("tredje: x1 < x2 og z1<z2")
+                if self.point_in_dir == (1,0,0) and self.point_out_dir == (0,0,1): #one elbow
+                    print("fjerde, dir er rett, her legges punkter til i complete_path")
+                    self.complete_path.append([(self.point_in[0], self.point_in[1], self.point_in[2]),(self.point_out[0] - self.pipe.elbow_radius, self.point_in[1], self.point_in[2])])
+                    self.complete_path.append([(self.point_out[0] - self.pipe.elbow_radius, self.point_in[1], self.point_in[2] + self.pipe.elbow_radius), (1,0,0), (0,0,-1) ])
+                    self.complete_path.append([(self.point_out[0], self.point_in[1], self.point_in[2] + self.pipe.elbow_radius),(self.point_out[0], self.point_in[1], self.point_out[2])])
+                    print("Complete_path ser slik ut nå:", self.complete_path)
+            else:
+                self.complete_path.append(self.gen_path_x(self.point_in, self.point_out))
+        # return self.complete_path
+       
     def gen_path_x(self, p1, p2):
         """ Compares x-coordinates and bridges the gap """
         points_x_ok = []
@@ -87,4 +98,4 @@ class Path():
             # Hva skal skje her?
             pass
 
-        return points_z_ok
+        return 

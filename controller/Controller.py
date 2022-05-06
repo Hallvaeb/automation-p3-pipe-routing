@@ -18,12 +18,12 @@ class Controller:
 		env = Environment(
 			position = env_args[0], 
 			point_A = env_args[1], 
-			point_A_dir=(1, 0, 0), 
-			point_B = env_args[2], 
-			point_B_dir= (1, 0, 0), 
-			length = env_args[3], 
-			width = env_args[4], 
-			height = env_args[5])
+			point_A_dir=env_args[2], 
+			point_B = env_args[3], 
+			point_B_dir= env_args[4], 
+			length = env_args[5], 
+			width = env_args[6], 
+			height = env_args[7])
 		
 		# Equipment
 		equs = []
@@ -31,18 +31,18 @@ class Controller:
 			equs.append(Equipment(
 				position = equ_args[0], 
 				point_in = equ_args[1], 
-				point_in_dir=(1,0,0), 
-				point_out = equ_args[2], 
-				point_out_dir = (1,0, 0), 
-				length = equ_args[3], 
-				width = equ_args[4], 
-				height = equ_args[5]))
+				point_in_dir=equ_args[2], 
+				point_out = equ_args[3], 
+				point_out_dir = equ_args[4], 
+				length = equ_args[5], 
+				width = equ_args[6], 
+				height = equ_args[7]))
 			
 		# Pipe
 		pipe = Pipe(
 			diameter_outer = pipe_args[0], 
 			diameter_inner = pipe_args[1], 
-			elbow_curve_radius = pipe_args[2])
+			elbow_radius = pipe_args[2])
 
 		# Create paths
 		path_gen = PathGenerator(env, equs, pipe)
