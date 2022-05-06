@@ -32,8 +32,7 @@ class DFABuilder():
 		f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
 		f.write(txt)
 		f.close
-		return design_id
-
+		
 	def append_equ_to_DFA(equs, design_id):
 		""" Append equ to the current DFA file """
 		for equ in equs:
