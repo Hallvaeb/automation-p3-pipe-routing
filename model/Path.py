@@ -42,7 +42,7 @@ class Path():
                     print("Complete_path ser slik ut nå, med to elbows:", self.complete_path)
             else:
                 self.complete_path.append(self.gen_path_x(self.point_in, self.point_out))
-        # return self.complete_path
+        
        
     def gen_path_x(self, p1, p2):
         """ Compares x-coordinates and bridges the gap """
