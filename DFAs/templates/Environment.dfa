@@ -60,4 +60,51 @@
         height, 5;
 		Origin, Point(0,0,0);
     };
+
+(Child) body_color_f_<ENV_ID>: 
+{ 
+  Class, ug_body; 
+  Feature, {floor_<ENV_ID>:};  
+  Layer, 1; 
+  color, ug_askClosestColor(MEDIUM_TEAL_CYAN);  
+};
+
+(Child) body_color_w1_<ENV_ID>: 
+{ 
+  Class, ug_body; 
+  Feature, {wall_1_<ENV_ID>:};  
+  Layer, 1; 
+  color, ug_askClosestColor(MEDIUM_TEAL_CYAN);  
+};
 	
+(Child) body_color_w2_<ENV_ID>: 
+{ 
+  Class, ug_body; 
+  Feature, {wall_2_<ENV_ID>:};  
+  Layer, 1; 
+  color, ug_askClosestColor(MEDIUM_TEAL_CYAN);  
+};
+
+(Child) body_color_w3_<ENV_ID>: 
+{ 
+  Class, ug_body; 
+  Feature, {wall_3_<ENV_ID>:};  
+  Layer, 1; 
+  color, ug_askClosestColor(MEDIUM_TEAL_CYAN);  
+};
+
+(Child) body_color_w4_<ENV_ID>: 
+{ 
+  Class, ug_body; 
+  Feature, {wall_4_<ENV_ID>:};  
+  Layer, 1; 
+  color, ug_askClosestColor(MEDIUM_TEAL_CYAN);  
+};
+
+(Child) body_color_r_<ENV_ID>: 
+{ 
+  Class, ug_body; 
+  Feature, {roof_<ENV_ID>:};  
+  Layer, 1; 
+  color, ug_askClosestColor(MEDIUM_TEAL_CYAN);  
+};
