@@ -2,9 +2,8 @@
 
 *Pipe routing for Aker Solutions*
 
-# Resources
+## Report
 
-Report:
 https://docs.google.com/document/d/1gQied2pmj_HE8r64VDEEEapYqwb99caicUqv5cawwmU/edit?usp=sharing
 
 ## Diagrams 
@@ -21,7 +20,6 @@ https://docs.google.com/presentation/d/1volnQZx73xrEWFnqd1DYNUQJxOoo28eUqVTO4H7n
 https://docs.google.com/presentation/d/1yHX-N33iYnPBKCOc--ymY_Ym0EnStBr7sz17UqjRPcM/edit#slide=id.g11f14f842be_0_8
 
 
+# Unrelated to the project, but helpful:
 
-# Helpful:
-
-Tab inconsistency: F1, "convert indentation to tabs".
+Tab inconsistency when in VSCode: Press F1, then search and select "convert indentation to tabs".
