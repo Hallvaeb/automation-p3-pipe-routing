@@ -104,8 +104,14 @@ class DFABuilder():
 		txt = txt.replace("<PATH_ID>", path_ID)
 		txt = txt.replace("<PIPE_PATH>", path_element_string_names) 
 		txt = txt.replace("<PROFILE_CENTER>", str(path.point_in)) 
-		txt = txt.replace("<X_VECTOR>", str((0,1,0)))
-		txt = txt.replace("<Y_VECTOR>", str((0,0,1)))
+		if path.point_in_dir == (1,0,0) or path.point_in_dir == (-1,0,0):
+			print("valg 1, ut av høyre / venste vegg")
+			txt = txt.replace("<X_VECTOR>", str((0,1,0)))
+			txt = txt.replace("<Y_VECTOR>", str((0,0,1)))
+		elif path.point_in_dir == (0,0,1) or path.point_in_dir == (0,0,-1):
+			print("valg 3, ut av taket / gulvet")
+			txt = txt.replace("<X_VECTOR>", str((1,0,0)))
+			txt = txt.replace("<Y_VECTOR>", str((0,1,0)))
 		f.close()
 		f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
 		f.write(txt)
