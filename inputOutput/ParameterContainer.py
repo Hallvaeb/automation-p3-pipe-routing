@@ -4,13 +4,14 @@ from random import randint
 
 
 class ParameterContainer():
+	''' Contains parameters for premade solutions. 
+		ARE YOU AN ENGINEER LOOKING TO ADD A SPECIFIC CASE? Look to the bottom of this file.'''
 
-
-	def get_parameter_list(no_of_equs):
+	def get_parameter_list(number_of_equipments_or_id):
 		''' Returns all parameters needed to create a solution with the given number of equipments.
 			May be random or predefined depending on what's been implemented.'''
 		
-		if(no_of_equs == 2):
+		if(number_of_equipments_or_id == 2):
 
 			randomizer = randint(0,1)
 			if(randomizer == 0):
@@ -115,7 +116,7 @@ class ParameterContainer():
 
 			equs_args = [equ1_args, equ2_args]
 
-		elif(no_of_equs == 3):
+		elif(number_of_equipments_or_id == 3):
 			# Randomizes which parameters are given.
 			randomizer = randint(0,1)
 
@@ -208,7 +209,7 @@ class ParameterContainer():
 			equ3_args = [equ3_pos, equ3_point_in, equ3_point_in_dir, equ3_point_out, equ3_point_out_dir, equ3_length, equ3_width, equ3_height]
 			equs_args = [equ1_args, equ2_args, equ3_args]
 
-		elif(no_of_equs == 4):
+		elif(number_of_equipments_or_id == 4):
 			# FOUR ELEMENTS IN DIFFERENT X AND Z-COORDS.
 			# Environment
 			env_pos = (0, 0, 0)
@@ -268,7 +269,7 @@ class ParameterContainer():
 			equs_args = [equ1_args, equ2_args, equ3_args, equ4_args]
 
 		else:
-			raise ValueError(f"Solution not created for {no_of_equs} equipments yet.")
+			raise ValueError(f"Solution not created for {number_of_equipments_or_id} equipments or ID not found.")
 
 		# Pipe
 		pipe_diameter_outer = 200
@@ -279,3 +280,35 @@ class ParameterContainer():
 		pipe_args = [pipe_diameter_outer, pipe_diameter_inner, elbow_radius]
 		
 		return env_args, equs_args, pipe_args
+
+
+		''' ARE YOU AN ENGINEER LOOKING TO ADD A SPECIFIC CASE? 
+			Modify the template below, and insert your elif above the else statement above.'''
+		# elif(number_of_equipments_or_id == Your_ID_as_a_3-digit_int):
+		# 	# Environment, this must be in 1st quadrant! (positive values for env_pos coordinates)
+		# 	env_pos = (, , )
+		# 	env_point_A = (, , )
+		# 	env_point_A_dir = ( , , )
+		# 	env_point_B = ( , , )
+		# 	env_point_B_dir = ( , , )
+		# 	env_length = 
+		# 	env_width = 
+		# 	env_height = 
+
+		# 	# Equipment x
+		# 	equx_pos = (, , )
+		# 	equx_point_in = (, , )
+		# 	equx_point_in_dir=( , , )
+		# 	equx_point_out = (, , )
+		# 	equx_point_out_dir=( , , )
+		# 	equx_length = 
+		# 	equx_width = 
+		# 	equx_height = 
+
+		# 	equx_args = [equx_pos, equx_point_in, equx_point_in_dir, equx_point_out, equx_point_out_dir, equx_length, equx_width, equx_height]
+
+		# 	equs_args = [equx_args]
+
+		# pipe_diameter_outer = 
+		# pipe_diameter_inner = 
+		# elbow_radius = 
