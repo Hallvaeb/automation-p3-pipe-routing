@@ -34,7 +34,6 @@ class ParameterHolder():
 				equ1_length = 1000
 				equ1_width = 1000
 				equ1_height = 1000 + randint(0, 2000)
-				equ1_args = [equ1_pos, equ1_point_in, equ1_point_in_dir, equ1_point_out, equ1_point_out_dir, equ1_length, equ1_width, equ1_height]
 
 				# Equipment 2
 				equ2_pos = (5500, 4500, 4500)
@@ -45,7 +44,6 @@ class ParameterHolder():
 				equ2_length = 500
 				equ2_width = 1000
 				equ2_height = 1000 + randint(0, 2000)
-				equ2_args = [equ2_pos, equ2_point_in, equ2_point_in_dir, equ2_point_out, equ2_point_out_dir, equ2_length, equ2_width, equ2_height]
 
 			elif(randomizer == 1):
 				# TWO ELEMENTS IN DIFFERENT X AND Z-COORDS.
@@ -110,6 +108,10 @@ class ParameterHolder():
 				equ2_length = 1000
 				equ2_width = 1000
 				equ2_height = 1000
+
+			equ1_args = [equ1_pos, equ1_point_in, equ1_point_in_dir, equ1_point_out, equ1_point_out_dir, equ1_length, equ1_width, equ1_height]
+
+			equ2_args = [equ2_pos, equ2_point_in, equ2_point_in_dir, equ2_point_out, equ2_point_out_dir, equ2_length, equ2_width, equ2_height]
 
 			equs_args = [equ1_args, equ2_args]
 

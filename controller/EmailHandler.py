@@ -6,7 +6,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import pathlib
 
-path_to_dfa_folder = str(pathlib.Path().absolute().as_posix())+"/DFAs/"
+path_to_dfa_folder = str(pathlib.Path().absolute().as_posix())+"/inputOutput/"
 
 class EmailHandler():
 		

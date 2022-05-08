@@ -2,7 +2,7 @@
 
 from controller.IDGenerator import IDGenerator
 import pathlib
-path_to_dfa_folder = str(pathlib.Path().absolute().as_posix())+"/DFAs/"
+path_to_dfa_folder = str(pathlib.Path().absolute().as_posix())+"/inputOutput/"
 
 
 class DFABuilder():
