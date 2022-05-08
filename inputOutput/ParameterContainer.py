@@ -11,10 +11,8 @@ class ParameterContainer():
 		''' Returns all parameters needed to create a solution with the given number of equipments.
 			May be random or predefined depending on what's been implemented.'''
 		
-		if(number_of_equipments_or_id == 110):
-			pass
-		
-		elif(number_of_equipments_or_id == 2):
+
+		if(number_of_equipments_or_id == 2):
 
 			randomizer = randint(0,1)
 			if(randomizer == 0):
@@ -355,6 +353,75 @@ class ParameterContainer():
 			equ4_args = [equ4_pos, equ4_point_in, equ4_point_in_dir, equ4_point_out, equ4_point_out_dir, equ4_length, equ4_width, equ4_height]
 			
 			equs_args = [equ1_args, equ2_args, equ3_args, equ4_args]
+
+		elif(number_of_equipments_or_id == 10): # only 5 for now!
+			# Environment
+			env_pos = (0, 0, 0)
+			env_point_A = (0, 1000, 1000)
+			env_point_A_dir = (1,0,0)
+			env_point_B = (8500, 2500, 0)
+			env_point_B_dir = (0,0,-1)
+			env_length = 12000
+			env_width = 10000
+			env_height = 10000
+
+			# Equipment 1
+			equ1_pos = (1000, 500, 500)
+			equ1_point_in = (1000, 1000, 1000)
+			equ1_point_in_dir=(1,0,0)
+			equ1_point_out = (2000, 1000, 1000)
+			equ1_point_out_dir=(1,0,0)
+			equ1_length = 1000
+			equ1_width = 1000
+			equ1_height = 1000
+
+			# Equipment 2
+			equ2_pos = (3000, 500, 3000)
+			equ2_point_in = (3500, 1000, 3000)
+			equ2_point_in_dir=(0,0,1)
+			equ2_point_out = (4000, 1000, 3500)
+			equ2_point_out_dir=(1,0,0)
+			equ2_length = 1000
+			equ2_width = 1000
+			equ2_height = 1000
+
+			# Equipment 3
+			equ3_pos = (5000, 500, 4000)
+			equ3_point_in = (5500, 1000, 4000)
+			equ3_point_in_dir = (0,0,1)
+			equ3_point_out = (5500,1500,4500)
+			equ3_point_out_dir = (0,1,0)
+			equ3_length = 1000
+			equ3_width = 1000
+			equ3_height = 1000
+
+			# Equipment 4
+			equ4_pos = (8000, 2000, 4000)
+			equ4_point_in = (8000, 2500, 4500)
+			equ4_point_in_dir = (1,0,0)
+			equ4_point_out = (8500, 2500, 4000)
+			equ4_point_out_dir = (0,0,-1)
+			equ4_length = 1000
+			equ4_width = 1000
+			equ4_height = 1000
+
+			# Equipment 4
+			equ5_pos = (8000, 2000, 2500)
+			equ5_point_in = (8500, 2500, 3500)
+			equ5_point_in_dir = (0,0,-1)
+			equ5_point_out = (8500, 2500, 2500)
+			equ5_point_out_dir = (0,0,-1)
+			equ5_length = 1000
+			equ5_width = 1000
+			equ5_height = 1000
+
+			equ1_args = [equ1_pos, equ1_point_in, equ1_point_in_dir, equ1_point_out, equ1_point_out_dir, equ1_length, equ1_width, equ1_height]
+			equ2_args = [equ2_pos, equ2_point_in, equ2_point_in_dir, equ2_point_out, equ2_point_out_dir, equ2_length, equ2_width, equ2_height]
+			equ3_args = [equ3_pos, equ3_point_in, equ3_point_in_dir, equ3_point_out, equ3_point_out_dir, equ3_length, equ3_width, equ3_height]
+			equ4_args = [equ4_pos, equ4_point_in, equ4_point_in_dir, equ4_point_out, equ4_point_out_dir, equ4_length, equ4_width, equ4_height]
+			equ5_args = [equ5_pos, equ5_point_in, equ5_point_in_dir, equ5_point_out, equ5_point_out_dir, equ5_length, equ5_width, equ5_height]
+
+			equs_args = [equ1_args, equ2_args, equ3_args, equ4_args, equ5_args]
 
 		else:
 			raise ValueError(f"Solution not created for {number_of_equipments_or_id} equipments or ID not found.")

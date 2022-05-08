@@ -62,8 +62,12 @@ class Path():
                     self.complete_path.append([(self.point_in[0] + self.pipe.elbow_radius, self.point_in[1], self.point_out[2] + self.pipe.elbow_radius), (-1,0,0), (0,0,-1) ])
                     self.complete_path.append([(self.point_in[0] + self.pipe.elbow_radius, self.point_in[1], self.point_out[2]),(self.point_out[0], self.point_in[1], self.point_out[2])])
             
-            else:
+            elif self.point_in[2] == self.point_out[2]:
                 self.complete_path.append(self.gen_path_x(self.point_in, self.point_out))
+
+            elif self.point_in[0] == self.point_out[0]:
+                self.complete_path.append(self.gen_path_z(self.point_in, self.point_out))
+                
         
         if self.point_in[2] == self.point_out[2]: #XY-PLANE
             print("The points:", self.point_in, self.point_out)
@@ -97,8 +101,9 @@ class Path():
                     self.complete_path.append([(self.point_in[0] + self.pipe.elbow_radius, self.point_out[1] + self.pipe.elbow_radius, self.point_in[2] ), (-1,0,0), (0,-1,0) ])
                     self.complete_path.append([(self.point_in[0] + self.pipe.elbow_radius, self.point_out[1], self.point_in[2]),(self.point_out[0], self.point_out[1], self.point_in[2])])
 
-        #     else:
-        #         self.complete_path.append(self.gen_path_x(self.point_in, self.point_out))
+            elif self.point_in[0] == self.point_out[0]:
+                print("skal ikke inn her før alt annet")
+                self.complete_path.append(self.gen_path_y(self.point_in, self.point_out))
         
        
     def gen_path_x(self, p1, p2):
@@ -109,13 +114,13 @@ class Path():
         points_x_ok.append(p1)
         
         if(p1[0] == p2[0]):
-            print("1")
+            print("x-1")
             points_x_ok.append(p2)
 
             # Same x, må sjekke y om vi trenger en sving.
 
         elif((p2[0] - p1[0]) > 0):
-            print("2")
+            print("x-2")
 
             # p2 x largest
             if(p2[1] == p1[1]):
@@ -133,37 +138,59 @@ class Path():
     def gen_path_y(self, p1, p2):
         """ Compares y-coordinates and bridges the gap """
         points_y_ok = []
+
+        # We always start from p1
         points_y_ok.append(p1)
         
-        if((p1[1] - p2[1]) == 0):
+        if(p1[1] == p2[1]):
+            print("y-1")
             points_y_ok.append(p2)
-            return points_y_ok
 
-        elif((p1[1] - p2[1]) < 0):
-            # Hva skal skje her?
-            pass
+            # Same y, må sjekke z om vi trenger en sving.
+
+        elif((p2[1] - p1[1]) > 0):
+            print("y-2")
+
+            # p2 y largest
+            if(p2[2] == p1[2]):
+                print("y-3")
+                # Same z
+                points_y_ok.append(p2)
 
         elif((p1[1] - p2[1]) > 0):
-            # Hva skal skje her?
-            pass
-
+            print("y-4")
+            if(p1[2] - p2[2] < 0):
+                pass
+        print("returning", points_y_ok)
         return points_y_ok
 
     def gen_path_z(self, p1, p2):
         """ Compares z-coordinates and bridges the gap """
         points_z_ok = []
+
+        # We always start from p1
         points_z_ok.append(p1)
         
-        if((p1[2] - p2[2]) == 0):
+        if(p1[2] == p2[2]):
+            print("z-1")
             points_z_ok.append(p2)
-            return points_z_ok
 
-        elif((p1[2] - p2[2]) < 0):
-            # Hva skal skje her?
-            pass
+            # Same z, må sjekke y om vi trenger en sving.
+
+        elif((p2[2] - p1[2]) > 0):
+            print("z-2")
+
+            # p2 z largest
+            if(p2[1] == p1[1]):
+                print("z-3")
+                # Same y
+                points_z_ok.append(p2)
 
         elif((p1[2] - p2[2]) > 0):
-            # Hva skal skje her?
-            pass
-
-        return 
+            print("z-4")
+            points_z_ok.append(p2)
+            #p1 z is the biggest one
+            if(p1[1] - p2[1] < 0):
+                pass #??
+        print("returning", points_z_ok)
+        return points_z_ok

@@ -9,7 +9,7 @@ will give you the specific solution your engineer created.
 Number of Equs implemented: 2, 3 and 4. 
 """
 
-number_of_equipments_or_id = 2
+number_of_equipments_or_id = 10
 email = "your_email_please@gmail.com"
 
 # INPUT END --------------------------------------------------------------------
