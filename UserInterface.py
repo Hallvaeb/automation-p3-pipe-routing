@@ -10,5 +10,5 @@ email = "insert_your_email@gmail.com"
 
 # INPUT END --------------------------------------------------------------------
 
-env_args, equs_args, pipe_args = ParameterHolder.get_parameter_list(no_of_equs = 2)
+env_args, equs_args, pipe_args = ParameterHolder.get_parameter_list(no_of_equs = specify_number_of_equipments_please)
 Controller.construct(env_args, equs_args, pipe_args, email)
