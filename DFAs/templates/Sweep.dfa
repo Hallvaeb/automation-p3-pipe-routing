@@ -42,6 +42,6 @@
   alignment_init, parameter;
   orientation, {orientation_fixed};
   tolerances, {0, 0, 0};
-  Operation, subtract;
-  Target, {outer_sweep_<PATH_ID>:};
+  # Operation, subtract;
+  # Target, {outer_sweep_<PATH_ID>:};
 };
