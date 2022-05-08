@@ -14,3 +14,7 @@ Make it so that the piping diameter is dimensioned from what the equipment with 
 Obstacles. 
 
 Pipe, create bolt holes for the in and outlets
+
+### Pipes are plummed
+
+Opening them up was harder than imaginged.
