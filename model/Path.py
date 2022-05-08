@@ -31,6 +31,15 @@ class Path():
                     self.complete_path.append([(self.point_out[0] - self.pipe.elbow_radius, self.point_in[1], self.point_in[2] + self.pipe.elbow_radius), (1,0,0), (0,0,-1) ])
                     self.complete_path.append([(self.point_out[0], self.point_in[1], self.point_in[2] + self.pipe.elbow_radius),(self.point_out[0], self.point_in[1], self.point_out[2])])
                     print("Complete_path ser slik ut nå:", self.complete_path)
+            elif self.point_in[0] < self.point_out[0] and self.point_in[2] > self.point_out[2]: #self.point_out(for pathen aka slutten av path) is in Q4 for self.point_in
+                print("tredje: x1 < x2 og z1 > z2")
+                print("point_in_dir: ", self.point_in_dir, "point_out_dir:", self.point_out_dir)
+                if self.point_in_dir == (1,0,0) and self.point_out_dir == (0,0,-1): #one elbow down in z (directions here are for the PATH! in and out of the path, not equ!)
+                    print("fjerde")
+                    self.complete_path.append([(self.point_in[0], self.point_in[1], self.point_in[2]),(self.point_out[0] - self.pipe.elbow_radius, self.point_in[1], self.point_in[2])])
+                    self.complete_path.append([(self.point_out[0] - self.pipe.elbow_radius, self.point_in[1], self.point_in[2]- self.pipe.elbow_radius ), (1,0,0), (0, 0, 1) ]) #TODO: dobbeltsjekk vektorene, 
+                    self.complete_path.append([(self.point_out[0], self.point_in[1], self.point_in[2] - self.pipe.elbow_radius),(self.point_out[0], self.point_in[1], self.point_out[2])])
+                    print("Complete_path ser slik ut nå, med to elbows:", self.complete_path)
             else:
                 self.complete_path.append(self.gen_path_x(self.point_in, self.point_out))
         
