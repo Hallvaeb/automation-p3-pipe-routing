@@ -3,7 +3,7 @@
 from random import randint
 
 
-class ParameterHolder():
+class ParameterContainer():
 
 
 	def get_parameter_list(no_of_equs):
