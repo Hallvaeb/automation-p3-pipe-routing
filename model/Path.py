@@ -79,8 +79,8 @@ class Path():
                 if self.point_in_dir == (1,0,0) and self.point_out_dir == (0,1,0): #one elbow
                     print("fjerde, elbow: høyre og opp (xy)")
                     self.complete_path.append([(self.point_in[0], self.point_in[1], self.point_in[2]),(self.point_out[0] - self.pipe.elbow_radius, self.point_in[1], self.point_in[2])])
-                    self.complete_path.append([(self.point_out[0] - self.pipe.elbow_radius, self.point_in[1] + self.pipe.elbow_radius, self.point_in[2]), (1,0,0), (0,-1,0) ])
-                    self.complete_path.append([(self.point_out[0], self.point_in[1] + self.pipe.elbow_radius, self.point_in[2]),(self.point_out[0], self.point_in[1], self.point_out[2])])
+                    self.complete_path.append([(self.point_in[0] - self.pipe.elbow_radius, self.point_in[1] + self.pipe.elbow_radius, self.point_in[2]), (1,0,0), (0,-1,0) ])
+                    self.complete_path.append([(self.point_in[0], self.point_in[1] + self.pipe.elbow_radius, self.point_in[2]),(self.point_out[0], self.point_in[1], self.point_out[2])])
                     print("Complete_path ser slik ut nå:", self.complete_path)
 
                 elif self.point_in_dir == (0,1,0) and self.point_out_dir == (1,0,0): #one elbow
