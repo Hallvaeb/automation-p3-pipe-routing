@@ -1,12 +1,16 @@
 
 
+from os import path
+import os
 from controller.IDGenerator import IDGenerator
 import pathlib
-path_to_dfa_folder = str(pathlib.Path().absolute().as_posix())+"/inputOutput/"
+path_to_inputOutput_folder = str(pathlib.Path().absolute().as_posix())+"/inputOutput/"
 
 
 class DFABuilder():
 
+	if(not path.exists(path_to_inputOutput_folder+ "products/")):
+		os.mkdir(path_to_inputOutput_folder+ "products/")
 
 	def generate_dfa(env, equs, pipe, path_objects):
 		""" Generates the DFA file. 
@@ -22,14 +26,14 @@ class DFABuilder():
 	def append_env_to_DFA(env, design_id):
 		""" Append environment to the current DFA file """
 		env_ID = IDGenerator.create_dfa_element_ID("environment")
-		f = open(path_to_dfa_folder + "templates/Environment.dfa", "r")
+		f = open(path_to_inputOutput_folder + "templates/Environment.dfa", "r")
 		txt = f.read()
 		txt = txt.replace("<ENV_ID>", env_ID)
 		txt = txt.replace("<HEIGHT>", str(env.height))
 		txt = txt.replace("<WIDTH>", str(env.width))
 		txt = txt.replace("<LENGTH>", str(env.length))
 		f.close()
-		f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
+		f = open(path_to_inputOutput_folder + "products/" + design_id + ".dfa", "a")
 		f.write(txt)
 		f.close
 		
@@ -37,7 +41,7 @@ class DFABuilder():
 		""" Append equ to the current DFA file """
 		for equ in equs:
 			equ_ID = IDGenerator.create_dfa_element_ID("equipment")
-			f = open(path_to_dfa_folder + "templates/Equipment.dfa", "r")
+			f = open(path_to_inputOutput_folder + "templates/Equipment.dfa", "r")
 			txt = f.read()
 			txt = txt.replace("<EQU_ID>", equ_ID)
 			txt = txt.replace("<X_POS>", str(equ.position[0]))
@@ -47,21 +51,21 @@ class DFABuilder():
 			txt = txt.replace("<WIDTH>", str(equ.width))
 			txt = txt.replace("<LENGTH>", str(equ.length))
 			f.close()
-			f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
+			f = open(path_to_inputOutput_folder + "products/" + design_id + ".dfa", "a")
 			f.write(txt)
 			f.close
 
 	def append_pipe_system_to_DFA(pipe):
 		""" Append pipe to the current DFA file """
 		design_id = IDGenerator.create_design_ID()
-		f = open(path_to_dfa_folder + "templates/PipeSystem.dfa", "r")
+		f = open(path_to_inputOutput_folder + "templates/PipeSystem.dfa", "r")
 		txt = f.read()
 		txt = txt.replace("<ID>", design_id)
 		txt = txt.replace("<CURVE_RADIUS>", str(pipe.elbow_radius))
 		txt = txt.replace("<OUTER_RADIUS>", str(pipe.diameter_outer))
 		txt = txt.replace("<INNER_RADIUS>", str(pipe.diameter_inner))
 		f.close()
-		f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "w")
+		f = open(path_to_inputOutput_folder + "products/" + design_id + ".dfa", "w")
 		f.write(txt)
 		f.close
 		return design_id
@@ -72,7 +76,7 @@ class DFABuilder():
 		paths_to_sweep = []
 		for pipe_e in path.pipe_elements:
 			if(pipe_e.type == "elbow"):
-				f = open(path_to_dfa_folder + "templates/Elbow.dfa", "r")
+				f = open(path_to_inputOutput_folder + "templates/Elbow.dfa", "r")
 				txt = f.read()
 				txt = txt.replace("<CURVE>", pipe_e.ID)
 				txt = txt.replace("<ARC_CENTER>", pipe_e.center)
@@ -80,13 +84,13 @@ class DFABuilder():
 				txt = txt.replace("<Y_ARC_VECTOR>", pipe_e.y_arc_vector)
 				f.close()
 			elif(pipe_e.type == "straight"):
-				f = open(path_to_dfa_folder + "templates/Straight.dfa", "r")
+				f = open(path_to_inputOutput_folder + "templates/Straight.dfa", "r")
 				txt = f.read()
 				txt = txt.replace("<START_POINT>", pipe_e.start_point)
 				txt = txt.replace("<END_POINT>", pipe_e.end_point)
 				txt = txt.replace("<LINE>", pipe_e.ID)
 				f.close()
-			f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a") 
+			f = open(path_to_inputOutput_folder + "products/" + design_id + ".dfa", "a") 
 			f.write(txt)
 			f.close
 			paths_to_sweep.append(pipe_e.ID)
@@ -99,7 +103,7 @@ class DFABuilder():
 			path_element_string_names += e + ':, '
 		path_element_string_names = path_element_string_names[:-2]
 		path_ID = IDGenerator.create_dfa_element_ID("path_")
-		f = open(path_to_dfa_folder + "templates/Sweep.dfa", "r")
+		f = open(path_to_inputOutput_folder + "templates/Sweep.dfa", "r")
 		txt = f.read()
 		txt = txt.replace("<PATH_ID>", path_ID)
 		txt = txt.replace("<PIPE_PATH>", path_element_string_names) 
@@ -113,6 +117,6 @@ class DFABuilder():
 			txt = txt.replace("<X_VECTOR>", str((1,0,0)))
 			txt = txt.replace("<Y_VECTOR>", str((0,1,0)))
 		f.close()
-		f = open(path_to_dfa_folder + "products/" + design_id + ".dfa", "a")
+		f = open(path_to_inputOutput_folder + "products/" + design_id + ".dfa", "a")
 		f.write(txt)
 		f.close()

@@ -264,6 +264,7 @@ class ParameterHolder():
 			equ2_args = [equ2_pos, equ2_point_in, equ2_point_in_dir, equ2_point_out, equ2_point_out_dir, equ2_length, equ2_width, equ2_height]
 			equ3_args = [equ3_pos, equ3_point_in, equ3_point_in_dir, equ3_point_out, equ3_point_out_dir, equ3_length, equ3_width, equ3_height]
 			equ4_args = [equ4_pos, equ4_point_in, equ4_point_in_dir, equ4_point_out, equ4_point_out_dir, equ4_length, equ4_width, equ4_height]
+			
 			equs_args = [equ1_args, equ2_args, equ3_args, equ4_args]
 
 		else:

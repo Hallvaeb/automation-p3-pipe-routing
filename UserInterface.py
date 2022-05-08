@@ -5,7 +5,7 @@ from controller.Controller import Controller
 Check input and run this file to get solution sent to your email!
 """
 
-specify_number_of_equipments_please = 2
+specify_number_of_equipments_please = 4
 email = "insert_your_email@gmail.com"
 
 # INPUT END --------------------------------------------------------------------
