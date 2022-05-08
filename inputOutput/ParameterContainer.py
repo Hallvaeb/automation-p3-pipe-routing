@@ -11,7 +11,10 @@ class ParameterContainer():
 		''' Returns all parameters needed to create a solution with the given number of equipments.
 			May be random or predefined depending on what's been implemented.'''
 		
-		if(number_of_equipments_or_id == 2):
+		if(number_of_equipments_or_id == 110):
+			pass
+		
+		elif(number_of_equipments_or_id == 2):
 
 			randomizer = randint(0,1)
 			if(randomizer == 0):
@@ -118,7 +121,7 @@ class ParameterContainer():
 
 		elif(number_of_equipments_or_id == 3):
 			# Randomizes which parameters are given.
-			randomizer = randint(0,1)
+			randomizer = randint(0,3)
 
 			if(randomizer == 0):
 				''' THREE EQUIPMENT IN DIFFERENT X AND Z-COORDS '''
@@ -203,7 +206,92 @@ class ParameterContainer():
 				equ3_length = 1000
 				equ3_width = 1000
 				equ3_height = 1000
+
+			elif (randomizer==2):
+				# THREE ELEMENTS IN DIFFERENT X AND Y-COORDS.
+				# Environment
+				env_pos = (0, 0, 0)
+				env_point_A = (0, 5000, 2000)
+				env_point_A_dir = (1,0,0)
+				env_point_B = (10000, 5000, 2000)
+				env_point_B_dir = (1,0,0)
+				env_length = 10000
+				env_width = 10000
+				env_height = 10000
+
+				# Equipment 1
+				equ1_pos = (1500, 4500, 1500)
+				equ1_point_in = (1500, 5000, 2000)
+				equ1_point_in_dir=(1,0,0)
+				equ1_point_out = (2000, 5500, 2000)
+				equ1_point_out_dir=(0,-1,0)
+				equ1_length = 1000
+				equ1_width = 1000
+				equ1_height = 1000
+
+				# Equipment 2
+				equ2_pos = (4500, 1500, 1500)
+				equ2_point_in = (4500, 2000, 2000)
+				equ2_point_in_dir=(1,0,0)
+				equ2_point_out = (5500, 2000, 2000)
+				equ2_point_out_dir=(1,0,0)
+				equ2_length = 1000
+				equ2_width = 1000
+				equ2_height = 1000
+
+				# Equipment 3
+				equ3_pos = (6000, 4500, 1500)
+				equ3_point_in = (6500, 4500, 2000)
+				equ3_point_in_dir=(0,1,0)
+				equ3_point_out = (7000, 5000, 2000)
+				equ3_point_out_dir=(1,0,0)
+				equ3_length = 1000
+				equ3_width = 1000
+				equ3_height = 1000
 			
+			elif (randomizer==3):
+				# THREE ELEMENTS IN DIFFERENT X AND Y-COORDS.
+				# Environment
+				env_pos = (0, 0, 0)
+				env_point_A = (0, 5000, 2000)
+				env_point_A_dir = (1,0,0)
+				env_point_B = (10000, 5000, 2000)
+				env_point_B_dir = (1,0,0)
+				env_length = 10000
+				env_width = 10000
+				env_height = 10000
+
+				# Equipment 1
+				equ1_pos = (1500, 4500, 1500)
+				equ1_point_in = (1500, 5000, 2000)
+				equ1_point_in_dir=(1,0,0)
+				equ1_point_out = (2000, 5500, 2000)
+				equ1_point_out_dir=(0,-1,0)
+				equ1_length = 1000
+				equ1_width = 1000
+				equ1_height = 1000
+
+				# Equipment 2
+				equ2_pos = (3000, 7500, 1500)
+				equ2_point_in = (3000, 8000, 2000)
+				equ2_point_in_dir=(1,0,0)
+				equ2_point_out = (4000, 8000, 2000)
+				equ2_point_out_dir=(1,0,0)
+				equ2_length = 1000
+				equ2_width = 1000
+				equ2_height = 1000
+
+				# Equipment 3
+				equ3_pos = (6000, 4500, 1500)
+				equ3_point_in = (6500, 4500, 2000)
+				equ3_point_in_dir=(0,1,0)
+				equ3_point_out = (7000, 5000, 2000)
+				equ3_point_out_dir=(1,0,0)
+				equ3_length = 1000
+				equ3_width = 1000
+				equ3_height = 1000
+			
+
 			equ1_args = [equ1_pos, equ1_point_in, equ1_point_in_dir, equ1_point_out, equ1_point_out_dir, equ1_length, equ1_width, equ1_height]
 			equ2_args = [equ2_pos, equ2_point_in, equ2_point_in_dir, equ2_point_out, equ2_point_out_dir, equ2_length, equ2_width, equ2_height]
 			equ3_args = [equ3_pos, equ3_point_in, equ3_point_in_dir, equ3_point_out, equ3_point_out_dir, equ3_length, equ3_width, equ3_height]
