@@ -5,10 +5,10 @@ from controller.Controller import Controller
 Check input and run this file to get solution sent to your email!
 """
 
-specify_number_of_equipments_please = 2
+specify_number_of_equipments_please = 3
 email = "insert_your_email@gmail.com"
 
 # INPUT END --------------------------------------------------------------------
 
-env_args, equs_args, pipe_args = ParameterHolder.get_parameter_list(no_of_equs = 2)
+env_args, equs_args, pipe_args = ParameterHolder.get_parameter_list(specify_number_of_equipments_please)
 Controller.construct(env_args, equs_args, pipe_args, email)

@@ -125,8 +125,8 @@ class ParameterHolder():
 				env_pos = (0, 0, 0)
 				env_point_A = (0, 5000, 4500)
 				env_point_A_dir = (1,0,0)
-				env_point_B = (10000, 5000, 8500)
-				env_point_B_dir = (1,0,0)
+				env_point_B = (8000, 5000, 0)
+				env_point_B_dir = (0,0,-1)
 				env_length = 10000
 				env_width = 10000
 				env_height = 10000
@@ -151,13 +151,13 @@ class ParameterHolder():
 				equ2_width = 1000
 				equ2_height = 1000
 
-				# Equipment 3 (above)
-				equ3_pos = (4000, 4500, 6500)
-				equ3_point_in = (5000, 5000, 6500)
-				equ3_point_in_dir=(0,0,1)
-				equ3_point_out = (6000, 5000, 7000)
-				equ3_point_out_dir=(1,0,0)
-				equ3_length = 2000
+				# Equipment 3
+				equ3_pos = (7500, 4500, 5500)
+				equ3_point_in = (8000, 5000, 6500)
+				equ3_point_in_dir=(0,0,-1)
+				equ3_point_out = (8000, 5000, 5500)
+				equ3_point_out_dir=(0,0,-1)
+				equ3_length = 1000
 				equ3_width = 1000
 				equ3_height = 1000
 
