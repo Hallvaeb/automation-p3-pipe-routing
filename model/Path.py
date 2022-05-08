@@ -136,6 +136,8 @@ class Path():
         
         if(p1[0] == p2[0]):
             print("1")
+            points_x_ok.append(p2)
+
             # Same x, må sjekke y om vi trenger en sving.
 
         elif((p2[0] - p1[0]) > 0):

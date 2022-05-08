@@ -1,12 +1,12 @@
-from inputOutput.ParameterHolder import ParameterHolder
+from inputOutput.ParameterContainer import ParameterContainer
 from controller.Controller import Controller
 
 """
 Check input and run this file to get solution sent to your email!
 """
 
-specify_number_of_equipments_please = 4
-email = "insert_your_email@gmail.com"
+specify_number_of_equipments_please = 2
+email = "your_email_please@gmail.com"
 
 # INPUT END --------------------------------------------------------------------
 
