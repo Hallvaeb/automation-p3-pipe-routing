@@ -35,4 +35,3 @@ class PathGenerator():
 			self.path_objects.append(path)
 			# Append this path to the list of complete paths. 
 			self.all_paths.append(path.complete_path)
-			print("all_paths = ", self.all_paths,  ", after i = ", i)

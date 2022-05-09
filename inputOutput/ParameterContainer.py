@@ -504,7 +504,7 @@ class ParameterContainer():
 		# 	env_width = 
 		# 	env_height = 
 
-		# 	# Equipment x
+		# 	# Equipment x (replace x with 1, 2, 3, 4 etc as you add more equipment)
 		# 	equx_pos = (, , )
 		# 	equx_point_in = (, , )
 		# 	equx_point_in_dir=( , , )

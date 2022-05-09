@@ -110,16 +110,16 @@ class DFABuilder():
 		txt = txt.replace("<PROFILE_CENTER>", str(path.point_in)) 
 		
 		if path.point_in_dir == (1,0,0) or path.point_in_dir == (-1,0,0):
-			print("valg 1, ut av høyre / venste vegg")
+			# print("valg 1, ut av høyre / venste vegg")
 			txt = txt.replace("<X_VECTOR>", str((0,1,0)))
 			txt = txt.replace("<Y_VECTOR>", str((0,0,1)))
 		elif path.point_in_dir == (0,0,1) or path.point_in_dir == (0,0,-1):
-			print("valg 3, ut av taket / gulvet")
+			# print("valg 3, ut av taket / gulvet")
 			txt = txt.replace("<X_VECTOR>", str((1,0,0)))
 			txt = txt.replace("<Y_VECTOR>", str((0,1,0)))
 
 		elif path.point_in_dir == (0,1,0) or path.point_in_dir == (0,-1,0):
-			print("valg 5, ut av taket / gulvet")
+			# print("valg 5, ut av taket / gulvet")
 			txt = txt.replace("<X_VECTOR>", str((1,0,0)))
 			txt = txt.replace("<Y_VECTOR>", str((0,0,1)))
 		f.close()

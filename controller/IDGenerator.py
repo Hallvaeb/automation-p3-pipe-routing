@@ -19,7 +19,6 @@ class IDGenerator():
         r9 = str(random.randint(0, 9))
         r_all = r1+r2+r3+r4+r5+r6+r7+r8+r9
         id = element + r_all
-        #print("ID generated for " +self.type+", id = " + id)
         return id
     
     def create_design_ID():
@@ -52,5 +51,4 @@ class IDGenerator():
         r9 = str(random.randint(0, 9))
         r_all = r1+r2+r3+r4+r5+r6+r7+r8+r9
         id = "element_" + r_all
-        #print("ID generated for " +self.type+", id = " + id)
         return id

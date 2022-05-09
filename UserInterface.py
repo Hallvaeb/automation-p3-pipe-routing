@@ -6,11 +6,11 @@ Check input and run this file to get solution sent to your email!
 Have you recieved an ID from your engineer? All parameter-IDs are over 3 digits and
 will give you the specific solution your engineer created. 
 
-Number of Equs implemented: 2, 3 and 4. 
+Number of Equs implemented: 2, 3, 4 and 10. The most complex is 10, by far.
 """
 
 number_of_equipments_or_id = 10
-email = "hallvard.bjorgen@gmail.com"
+email = "your_email_please@gmail.com"
 
 # INPUT END --------------------------------------------------------------------
 
