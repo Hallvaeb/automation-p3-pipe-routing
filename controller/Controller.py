@@ -55,4 +55,4 @@ class Controller:
 		# Send email
 		EmailHandler.send_design_to_email(design_id, email)
 
-		print(f"DFA file created and sent to email. \nDesignID: {design_id} \nEmail: {email}")
+		print(f"DFA file created with DesignID: {design_id}")
