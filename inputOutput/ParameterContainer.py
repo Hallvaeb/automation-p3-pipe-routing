@@ -11,7 +11,6 @@ class ParameterContainer():
 		''' Returns all parameters needed to create a solution with the given number of equipments.
 			May be random or predefined depending on what's been implemented.'''
 		
-
 		if(number_of_equipments_or_id == 2):
 
 			randomizer = randint(0,1)
@@ -354,14 +353,14 @@ class ParameterContainer():
 			
 			equs_args = [equ1_args, equ2_args, equ3_args, equ4_args]
 
-		elif(number_of_equipments_or_id == 10): # only 5 for now!
+		elif(number_of_equipments_or_id == 10):
 			# Environment
 			env_pos = (0, 0, 0)
 			env_point_A = (0, 1000, 1000)
 			env_point_A_dir = (1,0,0)
-			env_point_B = (8500, 2500, 0)
-			env_point_B_dir = (0,0,-1)
-			env_length = 12000
+			env_point_B = (13500, 10000, 3000) 
+			env_point_B_dir = (0,1,0)
+			env_length = 15000
 			env_width = 10000
 			env_height = 10000
 
@@ -405,23 +404,78 @@ class ParameterContainer():
 			equ4_width = 1000
 			equ4_height = 1000
 
-			# Equipment 4
+			# Equipment 5
 			equ5_pos = (8000, 2000, 2500)
 			equ5_point_in = (8500, 2500, 3500)
 			equ5_point_in_dir = (0,0,-1)
-			equ5_point_out = (8500, 2500, 2500)
-			equ5_point_out_dir = (0,0,-1)
+			equ5_point_out = (8500, 3000, 3000)
+			equ5_point_out_dir = (0,1,0)
 			equ5_length = 1000
 			equ5_width = 1000
 			equ5_height = 1000
+
+			# Equipment 6
+			equ6_pos = (1000, 3000, 2500) 
+			equ6_point_in = (2000, 3500, 3000)
+			equ6_point_in_dir = (-1,0,0)
+			equ6_point_out = (1500, 4000, 3000)
+			equ6_point_out_dir = (0,1,0)
+			equ6_length = 1000
+			equ6_width = 1000
+			equ6_height = 1000
+
+			# Equipment 7
+			equ7_pos = (1000, 6000, 2500)
+			equ7_point_in = (1500, 6000, 3000)
+			equ7_point_in_dir = (0,1,0)
+			equ7_point_out = (2000, 6500, 3000)
+			equ7_point_out_dir = (1,0,0)
+			equ7_length = 1000
+			equ7_width = 1000
+			equ7_height = 1000
+
+			# Equipment 8
+			equ8_pos = (5000, 6000, 6500)
+			equ8_point_in = (5500, 6500, 6500)
+			equ8_point_in_dir = (0,0,1)
+			equ8_point_out = (6000, 6500, 7000)
+			equ8_point_out_dir = (1,0,0)
+			equ8_length = 1000
+			equ8_width = 1000
+			equ8_height = 1000
+
+			# Equipment 9
+			equ9_pos = (9000, 4000, 6500)
+			equ9_point_in = (9500, 5000, 7000)
+			equ9_point_in_dir = (0,-1,0)
+			equ9_point_out = (10000, 4500, 7000)
+			equ9_point_out_dir = (1,0,0)
+			equ9_length = 1000
+			equ9_width = 1000
+			equ9_height = 1000
+
+			# Equipment 10
+			equ10_pos = (13000, 4000, 2500)
+			equ10_point_in = (13500, 4500, 3500)
+			equ10_point_in_dir = (0,0,-1)
+			equ10_point_out = (13500, 5000, 3000)
+			equ10_point_out_dir = (0,1,0)
+			equ10_length = 1000
+			equ10_width = 1000
+			equ10_height = 1000
 
 			equ1_args = [equ1_pos, equ1_point_in, equ1_point_in_dir, equ1_point_out, equ1_point_out_dir, equ1_length, equ1_width, equ1_height]
 			equ2_args = [equ2_pos, equ2_point_in, equ2_point_in_dir, equ2_point_out, equ2_point_out_dir, equ2_length, equ2_width, equ2_height]
 			equ3_args = [equ3_pos, equ3_point_in, equ3_point_in_dir, equ3_point_out, equ3_point_out_dir, equ3_length, equ3_width, equ3_height]
 			equ4_args = [equ4_pos, equ4_point_in, equ4_point_in_dir, equ4_point_out, equ4_point_out_dir, equ4_length, equ4_width, equ4_height]
 			equ5_args = [equ5_pos, equ5_point_in, equ5_point_in_dir, equ5_point_out, equ5_point_out_dir, equ5_length, equ5_width, equ5_height]
+			equ6_args = [equ6_pos, equ6_point_in, equ6_point_in_dir, equ6_point_out, equ6_point_out_dir, equ6_length, equ6_width, equ6_height]
+			equ7_args = [equ7_pos, equ7_point_in, equ7_point_in_dir, equ7_point_out, equ7_point_out_dir, equ7_length, equ7_width, equ7_height]
+			equ8_args = [equ8_pos, equ8_point_in, equ8_point_in_dir, equ8_point_out, equ8_point_out_dir, equ8_length, equ8_width, equ8_height]
+			equ9_args = [equ9_pos, equ9_point_in, equ9_point_in_dir, equ9_point_out, equ9_point_out_dir, equ9_length, equ9_width, equ9_height]
+			equ10_args = [equ10_pos, equ10_point_in, equ10_point_in_dir, equ10_point_out, equ10_point_out_dir, equ10_length, equ10_width, equ10_height]
 
-			equs_args = [equ1_args, equ2_args, equ3_args, equ4_args, equ5_args]
+			equs_args = [equ1_args, equ2_args, equ3_args, equ4_args, equ5_args, equ6_args, equ7_args, equ8_args, equ9_args, equ10_args]
 
 		else:
 			raise ValueError(f"Solution not created for {number_of_equipments_or_id} equipments or ID not found.")
