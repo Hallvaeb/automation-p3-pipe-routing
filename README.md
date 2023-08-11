@@ -4,7 +4,8 @@
 
 ## Report
 
-https://docs.google.com/document/d/1gQied2pmj_HE8r64VDEEEapYqwb99caicUqv5cawwmU/edit?usp=sharing
+Download:  
+https://github.com/Hallvaeb/automation-p3-pipe-routing/blob/master/Pipe%20Routing%20Report.pdf?raw=true
 
 ## Diagrams 
 
